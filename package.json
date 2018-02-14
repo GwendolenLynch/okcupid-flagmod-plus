@@ -5,5 +5,16 @@
     "main": "js/main.js",
     "repository": "https://github.com/GawainLynch/okcupid-flagmod-plus.git",
     "author": "Gawain Lynch <gawain.lynch@gmail.com>",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^5.0.0",
+        "eslint-config-airbnb": "^17.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.10.0"
+    },
+    "scripts": {
+        "lint": "eslint js/",
+        "lint-fix": "eslint --fix js/"
+    }
 }

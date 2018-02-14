@@ -16,5 +16,23 @@
     "options_ui": {
         "page": "html/options.html",
         "open_in_tab": false
-    }
+    },
+    "permissions": [
+        "storage",
+        "https://www.okcupid.com/flagmod"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+                "js/defaults.js",
+                "js/main.js"
+            ],
+            "matches": [
+                "https://www.okcupid.com/flagmod"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        "html/vote-form.html"
+    ]
 }

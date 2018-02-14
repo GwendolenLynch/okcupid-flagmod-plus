@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OkCupid Flagmod Plus</title>
+</head>
+<body>
+<main id="page">
+<div id="main_content" class="page-section">
+    <div id="left_column">
+        <form>
+            <br>
+            <table>
+                <caption><h2>Standard Buttons</h2></caption>
+                <thead>
+                <th>Abbreviation</th>
+                <th>Meaning</th>
+                <th>Vote Comment (optional)</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>NV/LA</td>
+                    <td>No Violation/Leave Alone</td>
+                    <td><input type="text" id="comment-nv-la"></td>
+                </tr>
+                <tr>
+                    <td>NTU</td>
+                    <td>Not The User</td>
+                    <td><input type="text" id="comment-ntu"></td>
+                </tr>
+                <tr>
+                    <td>Bot</td>
+                    <td>Scammer Grammar</td>
+                    <td><input type="text" id="comment-scammer"></td>
+                </tr>
+                <tr>
+                    <td>SB</td>
+                    <td>Spam/scam Bot</td>
+                    <td><input type="text" id="comment-bot"></td>
+                </tr>
+                <tr>
+                    <td>RIS</td>
+                    <td>Reverse Image Search</td>
+                    <td><input type="text" id="comment-ris"></td>
+                </tr>
+                <tr>
+                    <td>ECU</td>
+                    <td>Extreme Close-Up</td>
+                    <td><input type="text" id="comment-ecu"></td>
+                </tr>
+                <tr>
+                    <td>OS</td>
+                    <td>Sexual/Nudity</td>
+                    <td><input type="text" id="comment-os"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <table>
+                <caption><h2>Custom Buttons</h2></caption>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Vote</th>
+                    <th>Button Label</th>
+                    <th>Vote Comment</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox" id="custom-0"></td>
+                    <td>
+                        <select id="custom-0-vote">
+                            <option value="1">&#x274C;</option>
+                            <option value="0">&#x2713;</option>
+                        </select>
+                    </td>
+                    <td><input type="text" id="custom-0-label"></td>
+                    <td><input type="text" id="custom-0-comment"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="custom-1"></td>
+                    <td>
+                        <select id="custom-1-vote">
+                            <option value="1">&#x274C;</option>
+                            <option value="0">&#x2713;</option>
+                        </select>
+                    </td>
+                    <td><input type="text" id="custom-1-label"></td>
+                    <td><input type="text" id="custom-1-comment"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="custom-2"></td>
+                    <td>
+                        <select id="custom-2-vote">
+                            <option value="1">&#x274C;</option>
+                            <option value="0">&#x2713;</option>
+                        </select>
+                    </td>
+                    <td><input type="text" id="custom-2-label"></td>
+                    <td><input type="text" id="custom-2-comment"></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" id="custom-3"></td>
+                    <td>
+                        <select id="custom-3-vote">
+                            <option value="1">&#x274C;</option>
+                            <option value="0">&#x2713;</option>
+                        </select>
+                    </td>
+                    <td><input type="text" id="custom-3-label"></td>
+                    <td><input type="text" id="custom-3-comment"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <hr>
+            <button id="save">Save</button>
+            <button id="reset">Reset</button>
+            <span id="status"></span>
+        </form>
+    </div>
+</div>
+</main>
+<script src="../js/defaults.js"></script>
+<script src="../js/options.js"></script>
+</body>
+</html>
+

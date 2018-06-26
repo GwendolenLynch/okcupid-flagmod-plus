@@ -116,7 +116,7 @@ class FlagmodPlus {
             reports.removeChild(reports.firstChild);
         }
 
-        divImage.setAttribute('style', 'width: 530px; height: 530px;');
+        divImage.setAttribute('style', 'min-width: 530px; min-height: 530px;');
         divImage.appendChild(image);
         reports.appendChild(divImage);
     }

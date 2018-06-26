@@ -129,19 +129,25 @@ class FlagmodPlus {
 
         reports.insertBefore(divSearch, reports.firstChild);
         divSearch.setAttribute('id', 'flagmod_plus_ris');
-        divSearch.setAttribute('style', 'padding-bottom: 5px;');
-        divSearch.innerHTML = '<strong>Image Search: </strong>';
+        divSearch.setAttribute('style', 'padding-bottom: 5px; text-align: center;');
 
         engines.forEach((engine) => {
             const anchor = document.createElement('a');
-            const button = document.createElement('button');
+            const button = document.createElement('input');
+
+            button.setAttribute('type', 'image');
+            anchor.setAttribute('alt', engine.name);
+            button.setAttribute('src', chrome.runtime.getURL(engine.logo));
+            button.setAttribute('width', '100');
+            button.setAttribute('height', '30');
+            button.setAttribute('style', 'vertical-align: middle;');
 
             anchor.setAttribute('href', engine.url);
             anchor.setAttribute('alt', engine.name);
             anchor.setAttribute('target', '_blank');
             anchor.setAttribute('class', 'flatbutton gray');
             anchor.setAttribute('style', 'margin-right: 5px;');
-            anchor.textContent = engine.name;
+            anchor.appendChild(button);
 
             divSearch.appendChild(anchor);
         });
@@ -152,14 +158,17 @@ class FlagmodPlus {
             {
                 name: 'Google',
                 url: `https://www.google.com/searchbyimage?site=search&sa=X&image_url=${url}`,
+                logo: 'images/logo-google-images.svg',
             },
             {
                 name: 'TinEye',
                 url: `https://tineye.com/search/?pluginver=chrome-1.2.0&url=${url}`,
+                logo: 'images/logo-tineye.svg',
             },
             {
                 name: 'Yandex',
                 url: `https://yandex.com/images/search?rpt=imageview&img_url=${url}`,
+                logo: 'images/logo-yandex.svg',
             },
         ];
     }

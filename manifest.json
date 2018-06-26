@@ -33,6 +33,7 @@
         }
     ],
     "web_accessible_resources": [
-        "html/vote-form.html"
+        "html/vote-form.html",
+        "images/logo-*.svg"
     ]
 }

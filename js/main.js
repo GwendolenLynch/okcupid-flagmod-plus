@@ -112,12 +112,21 @@ class FlagmodPlus {
         const image = reports.querySelector('img');
         const divImage = document.createElement('div');
 
-        while (reports.hasChildNodes()) {
-            reports.removeChild(reports.firstChild);
-        }
-
         divImage.setAttribute('style', 'min-width: 530px; min-height: 530px;');
         divImage.appendChild(image);
+
+        while (reports.hasChildNodes()) {
+            if (typeof reports.firstChild.classList !== 'undefined') {
+                const nodeClass = reports.firstChild.classList.value;
+                if (nodeClass === 'flag_text') {
+                    divImage.appendChild(reports.firstChild);
+                }
+                if (nodeClass === 'flag_footnote') {
+                    divImage.appendChild(reports.firstChild);
+                }
+            }
+            reports.removeChild(reports.firstChild);
+        }
         reports.appendChild(divImage);
     }
 

@@ -46,20 +46,15 @@ class FlagmodPlus {
         }
     }
 
+    /**
+     * @param {Object} buttons
+     * @param {HTMLElement} form
+     */
     static addButtons(buttons, form) {
         const div = document.getElementById('flagmod_plus_quick_vote');
 
-        buttons.forEach((config) => {
-            const button = document.createElement('button');
-
-            button.setAttribute('type', 'button');
-            button.setAttribute('class', `flatbutton ${config.colour}`);
-            button.setAttribute('data-vote', config.vote);
-            button.setAttribute('data-comment', config.comment);
-            button.setAttribute('title', config.comment);
-            button.innerText = config.label;
-
-            div.appendChild(button);
+        buttons.forEach((buttonConfig) => {
+            FlagmodPlus.createButtonElement(buttonConfig, div);
         });
     }
 
@@ -70,23 +65,46 @@ class FlagmodPlus {
         buttons.forEach((buttonConfig) => {
             if (buttonConfig.enable === true) {
                 unhidden = true;
-
-                const button = document.createElement('button');
-                const colour = buttonConfig.vote === '1' ? 'blue' : 'green';
-
-                button.setAttribute('type', 'button');
-                button.setAttribute('class', `flatbutton ${colour}`);
-                button.setAttribute('data-vote', buttonConfig.vote);
-                button.setAttribute('data-comment', buttonConfig.comment);
-                button.setAttribute('title', buttonConfig.comment);
-                button.innerText = buttonConfig.label;
-
-                div.appendChild(button);
+                FlagmodPlus.createButtonElement(buttonConfig, div);
             }
         });
         if (unhidden) {
             document.getElementById('vote_custom').removeAttribute('hidden');
         }
+    }
+
+    /**
+     * @param {Object} config
+     * @param {HTMLElement} div
+     */
+    static createButtonElement(config, div) {
+        const button = document.createElement('button');
+        const colour = FlagmodPlus.getVoteButtonColour(config.vote);
+
+        button.setAttribute('type', 'button');
+        button.setAttribute('class', `flatbutton ${colour}`);
+        button.setAttribute('data-vote', config.vote);
+        button.setAttribute('data-comment', config.comment);
+        button.setAttribute('title', config.comment);
+        button.innerText = config.label;
+
+        div.appendChild(button);
+    }
+
+    /**
+     * @param {int|string} vote
+     * @returns {string}
+     */
+    static getVoteButtonColour(vote) {
+        vote = parseInt(vote);
+        if (vote === 11) {
+            return 'red';
+        }
+        if (vote === 1) {
+            return 'blue';
+        }
+
+        return 'green';
     }
 
     static addEventListeners() {

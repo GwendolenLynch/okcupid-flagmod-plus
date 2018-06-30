@@ -56,6 +56,7 @@ class FlagmodPlus {
             button.setAttribute('class', `flatbutton ${config.colour}`);
             button.setAttribute('data-vote', config.vote);
             button.setAttribute('data-comment', config.comment);
+            button.setAttribute('title', config.comment);
             button.innerText = config.label;
 
             div.appendChild(button);
@@ -77,6 +78,7 @@ class FlagmodPlus {
                 button.setAttribute('class', `flatbutton ${colour}`);
                 button.setAttribute('data-vote', buttonConfig.vote);
                 button.setAttribute('data-comment', buttonConfig.comment);
+                button.setAttribute('title', buttonConfig.comment);
                 button.innerText = buttonConfig.label;
 
                 div.appendChild(button);
@@ -150,6 +152,7 @@ class FlagmodPlus {
             button.setAttribute('width', '100');
             button.setAttribute('height', '30');
             button.setAttribute('style', 'vertical-align: middle;');
+            button.setAttribute('title', `Search for this image on ${engine.name}`);
 
             anchor.setAttribute('href', engine.url);
             anchor.setAttribute('alt', engine.name);

@@ -9,17 +9,10 @@ class FlagmodPlus {
         storage.sync.get(buttons, config => {
             fetch(chrome.runtime.getURL('html/vote-form.html'))
                 .then(response => response.text())
-                .then((formHtml) => {
+                .then((html) => {
+                    const form = FlagmodPlus.createVotingForm(html);
+
                     FlagmodPlus.moveComments();
-
-                    const userId = document.querySelector('input[name="userid"');
-                    const objectId = document.querySelector('input[name="objectid"');
-                    const form = document.getElementById('flagmodform');
-
-                    form.innerHTML = formHtml;
-                    form.querySelector('input[name="userid"').value = userId.value;
-                    form.querySelector('input[name="objectid"').value = objectId.value;
-
                     FlagmodPlus.addButtons(config.standard, form);
                     FlagmodPlus.addButtonsCustom(config.custom, form);
                     FlagmodPlus.addEventListeners();
@@ -27,6 +20,22 @@ class FlagmodPlus {
                     FlagmodPlus.addImageSearchLinks();
                 });
         });
+    }
+
+    /**
+     * @param {string} html
+     * @returns {HTMLElement | null}
+     */
+    static createVotingForm(html) {
+        const userId = document.querySelector('input[name="userid"');
+        const objectId = document.querySelector('input[name="objectid"');
+        const form = document.getElementById('flagmodform');
+
+        form.innerHTML = html;
+        form.querySelector('input[name="userid"').value = userId.value;
+        form.querySelector('input[name="objectid"').value = objectId.value;
+
+        return form;
     }
 
     static moveComments() {

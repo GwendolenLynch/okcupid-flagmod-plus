@@ -20,15 +20,9 @@ class FlagmodPlusDefaults
                         vote: 1,
                     },
                     {
-                        label: 'Scammer Grammar',
-                        comment: 'SG',
-                        key: 'comment-scammer',
-                        vote: 1,
-                    },
-                    {
-                        label: 'Spam/scam Bot',
-                        comment: 'Bot',
-                        key: 'comment-bot',
+                        label: 'Extreme Close-Up',
+                        comment: 'ECU',
+                        key: 'comment-ecu',
                         vote: 1,
                     },
                     {
@@ -38,9 +32,15 @@ class FlagmodPlusDefaults
                         vote: 1,
                     },
                     {
-                        label: 'Extreme Close-Up',
-                        comment: 'ECU',
-                        key: 'comment-ecu',
+                        label: 'Spam/scam Bot',
+                        comment: 'Bot',
+                        key: 'comment-bot',
+                        vote: 1,
+                    },
+                    {
+                        label: 'Scammer Grammar',
+                        comment: 'SG',
+                        key: 'comment-scammer',
                         vote: 1,
                     },
                     {

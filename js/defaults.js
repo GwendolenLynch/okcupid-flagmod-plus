@@ -33,6 +33,7 @@ class FlagmodPlusDefaults
                     },
                     {
                         label: 'Reverse Image Search',
+                        key: 'comment-ris',
                         comment: 'RIS',
                         vote: 1,
                     },

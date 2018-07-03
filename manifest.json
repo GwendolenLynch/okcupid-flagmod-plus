@@ -35,5 +35,10 @@
     "web_accessible_resources": [
         "html/vote-form.html",
         "images/logo-*.svg"
-    ]
+    ],
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    }
 }

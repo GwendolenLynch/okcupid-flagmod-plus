@@ -38,8 +38,9 @@ class FlagmodPlusOptions {
             buttons.custom[index].comment = document.getElementById(`custom-${index}-comment`).value;
         });
 
-        storage.sync.set(buttons, () => {
+        storage.sync.set({'buttons': buttons}, () => {
             const status = document.getElementById('status');
+
             status.textContent = 'Options saved.';
             setTimeout(() => { status.textContent = ''; }, 1000);
         });
@@ -49,16 +50,18 @@ class FlagmodPlusOptions {
         const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
         const options = FlagmodPlusDefaults.get();
 
-        storage.sync.get(options.buttons, (items) => {
-            items.standard.forEach((standard, index) => {
+        storage.sync.get(options, (items) => {
+            const buttons = items.buttons || {};
+
+            Object.entries(buttons.standard).forEach(([key, standard]) => {
                 document.getElementById(standard.key).value = standard.comment;
             });
 
-            items.custom.forEach((object, index) => {
-                document.getElementById(`custom-${index}`).checked = object.enable;
-                document.getElementById(`custom-${index}-vote`).value = object.vote;
-                document.getElementById(`custom-${index}-label`).value = object.label;
-                document.getElementById(`custom-${index}-comment`).value = object.comment;
+            Object.entries(buttons.custom).forEach(([key, custom]) => {
+                document.getElementById(`custom-${key}`).checked = custom.enable;
+                document.getElementById(`custom-${key}-vote`).value = custom.vote;
+                document.getElementById(`custom-${key}-label`).value = custom.label;
+                document.getElementById(`custom-${key}-comment`).value = custom.comment;
             });
         });
     }

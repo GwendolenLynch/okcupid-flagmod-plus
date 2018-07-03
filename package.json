@@ -16,5 +16,8 @@
     "scripts": {
         "lint": "eslint js/",
         "lint-fix": "eslint --fix js/"
+    },
+    "dependencies": {
+        "bulma": "^0.7.1"
     }
 }

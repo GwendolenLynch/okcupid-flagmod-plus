@@ -1,126 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html class="is-size-7">
 <head>
     <title>OkCupid Flagmod Plus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="../css/options.css">
 </head>
 <body>
 <main id="page">
-<div id="main_content" class="page-section">
-    <div id="left_column">
-        <form>
-            <br>
-            <table>
-                <caption><h2>Standard Buttons</h2></caption>
-                <thead>
-                <th>Abbreviation</th>
-                <th>Meaning</th>
-                <th>Vote Comment (optional)</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>NV/LA</td>
-                    <td>No Violation/Leave Alone</td>
-                    <td><input type="text" id="comment-nv-la"></td>
-                </tr>
-                <tr>
-                    <td>NTU</td>
-                    <td>Not The User</td>
-                    <td><input type="text" id="comment-ntu"></td>
-                </tr>
-                <tr>
-                    <td>ECU</td>
-                    <td>Extreme Close-Up</td>
-                    <td><input type="text" id="comment-ecu"></td>
-                </tr>
-                <tr>
-                    <td>RIS</td>
-                    <td>Reverse Image Search</td>
-                    <td><input type="text" id="comment-ris"></td>
-                </tr>
-                <tr>
-                    <td>Bot</td>
-                    <td>Scammer Grammar</td>
-                    <td><input type="text" id="comment-scammer"></td>
-                </tr>
-                <tr>
-                    <td>SB</td>
-                    <td>Spam/scam Bot</td>
-                    <td><input type="text" id="comment-bot"></td>
-                </tr>
-                <tr>
-                    <td>OS</td>
-                    <td>Sexual/Nudity</td>
-                    <td><input type="text" id="comment-os"></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="container">
+        <div class="section">
+            <form>
+                <table class="table table is-fullwidth table is-narrow">
+                    <caption>Standard Buttons</caption>
+                    <thead>
+                    <th>Abbr.</th>
+                    <th>Meaning</th>
+                    <th>Vote Comment (optional)</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>NV/LA</td>
+                        <td>No Violation/Leave Alone</td>
+                        <td><input type="text" id="comment-nv-la" class="input" placeholder="NV/LA"></td>
+                    </tr>
+                    <tr>
+                        <td>NTU</td>
+                        <td>Not The User</td>
+                        <td><input type="text" id="comment-ntu" class="input" placeholder="NTU"></td>
+                    </tr>
+                    <tr>
+                        <td>ECU</td>
+                        <td>Extreme Close-Up</td>
+                        <td><input type="text" id="comment-ecu" class="input" placeholder="ECU"></td>
+                    </tr>
+                    <tr>
+                        <td>RIS</td>
+                        <td>Reverse Image Search</td>
+                        <td><input type="text" id="comment-ris" class="input" placeholder="RIS"></td>
+                    </tr>
+                    <tr>
+                        <td>SG</td>
+                        <td>Scammer Grammar</td>
+                        <td><input type="text" id="comment-scammer" class="input" placeholder="SG"></td>
+                    </tr>
+                    <tr>
+                        <td>SB</td>
+                        <td>Spam/scam Bot</td>
+                        <td><input type="text" id="comment-bot" class="input" placeholder="Bot"></td>
+                    </tr>
+                    <tr>
+                        <td>OS</td>
+                        <td>Sexual/Nudity</td>
+                        <td><input type="text" id="comment-os" class="input" placeholder="OS"></td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <br>
-            <table>
-                <caption><h2>Custom Buttons</h2></caption>
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Vote</th>
-                    <th>Button Label</th>
-                    <th>Vote Comment</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><input type="checkbox" id="custom-0"></td>
-                    <td>
-                        <select id="custom-0-vote">
-                            <option value="1">&#x274C;</option>
-                            <option value="0">&#x2713;</option>
-                        </select>
-                    </td>
-                    <td><input type="text" id="custom-0-label"></td>
-                    <td><input type="text" id="custom-0-comment"></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" id="custom-1"></td>
-                    <td>
-                        <select id="custom-1-vote">
-                            <option value="1">&#x274C;</option>
-                            <option value="0">&#x2713;</option>
-                        </select>
-                    </td>
-                    <td><input type="text" id="custom-1-label"></td>
-                    <td><input type="text" id="custom-1-comment"></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" id="custom-2"></td>
-                    <td>
-                        <select id="custom-2-vote">
-                            <option value="1">&#x274C;</option>
-                            <option value="0">&#x2713;</option>
-                        </select>
-                    </td>
-                    <td><input type="text" id="custom-2-label"></td>
-                    <td><input type="text" id="custom-2-comment"></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" id="custom-3"></td>
-                    <td>
-                        <select id="custom-3-vote">
-                            <option value="1">&#x274C;</option>
-                            <option value="0">&#x2713;</option>
-                        </select>
-                    </td>
-                    <td><input type="text" id="custom-3-label"></td>
-                    <td><input type="text" id="custom-3-comment"></td>
-                </tr>
-                </tbody>
-            </table>
+                <table class="table table is-fullwidth table is-narrow">
+                    <caption>Custom Buttons</caption>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Vote</th>
+                        <th>Button Label</th>
+                        <th>Vote Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" id="custom-0"></td>
+                        <td>
+                            <select id="custom-0-vote">
+                                <option value="1">&#x274C;</option>
+                                <option value="0">&#x2713;</option>
+                            </select>
+                        </td>
+                        <td><input type="text" id="custom-0-label" class="input"></td>
+                        <td><input type="text" id="custom-0-comment" class="input"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="custom-1"></td>
+                        <td>
+                            <select id="custom-1-vote">
+                                <option value="1">&#x274C;</option>
+                                <option value="0">&#x2713;</option>
+                            </select>
+                        </td>
+                        <td><input type="text" id="custom-1-label" class="input"></td>
+                        <td><input type="text" id="custom-1-comment" class="input"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="custom-2"></td>
+                        <td>
+                            <select id="custom-2-vote">
+                                <option value="1">&#x274C;</option>
+                                <option value="0">&#x2713;</option>
+                            </select>
+                        </td>
+                        <td><input type="text" id="custom-2-label" class="input"></td>
+                        <td><input type="text" id="custom-2-comment" class="input"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" id="custom-3"></td>
+                        <td>
+                            <select id="custom-3-vote">
+                                <option value="1">&#x274C;</option>
+                                <option value="0">&#x2713;</option>
+                            </select>
+                        </td>
+                        <td><input type="text" id="custom-3-label" class="input"></td>
+                        <td><input type="text" id="custom-3-comment" class="input"></td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <hr>
-            <button id="save">Save</button>
-            <button id="reset">Reset</button>
-            <span id="status"></span>
-        </form>
+                <div class="columns">
+                    <div class="column">
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button id="save" class="button is-success is-outlined">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field is-grouped is-pulled-right">
+                            <div class="control">
+                                <button id="export" class="button is-info  is-outlined is-hidden">Export</button>
+                                <button id="import" class="button is-info  is-outlined is-hidden">Import</button>
+                                <button id="reset" class="button is-danger is-outlined">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span id="status"></span>
+            </form>
+        </div>
     </div>
-</div>
 </main>
 <script src="../js/defaults.js"></script>
 <script src="../js/options.js"></script>

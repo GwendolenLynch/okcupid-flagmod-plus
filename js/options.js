@@ -17,9 +17,10 @@ class FlagmodPlusOptions {
 
     static resetOptions() {
         const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
-        const options = FlagmodPlusDefaults.get();
 
-        storage.sync.set(options);
+        if (window.confirm('Do you want to reset options to the defaults?')) {
+            storage.sync.set(FlagmodPlusDefaults.get());
+        }
     }
 
     static saveOptions() {

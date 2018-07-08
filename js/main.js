@@ -6,7 +6,7 @@ class FlagmodPlus {
         const options = FlagmodPlusDefaults.get();
         const buttons = options.buttons;
 
-        storage.sync.get(buttons, config => {
+        storage.sync.get(buttons, (config) => {
             fetch(chrome.runtime.getURL('html/vote-form.html'))
                 .then(response => response.text())
                 .then((html) => {
@@ -127,7 +127,7 @@ class FlagmodPlus {
                 const commentInput = document.getElementById('comment');
 
                 if (event.target.hasAttribute('data-comment')) {
-                    const comment = commentInput.value ? ' ' + commentInput.value : '';
+                    const comment = commentInput.value ? ` ${commentInput.value}` : '';
                     commentInput.innerText = `${event.target.getAttribute('data-comment')}${comment}`;
                 }
                 document.getElementById('voteType').value = vote;

@@ -1,7 +1,6 @@
 'use strict';
 
-class FlagmodPlusDefaults
-{
+class FlagmodPlusDefaults {
     static get() {
         return {
             settings_schema: 1,
@@ -80,4 +79,3 @@ class FlagmodPlusDefaults
         };
     }
 }
-

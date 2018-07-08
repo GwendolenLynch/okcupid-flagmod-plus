@@ -35,7 +35,7 @@ class FlagmodPlusOptions {
         });
 
         browser.storage.sync
-            .set({'buttons': buttons})
+            .set({ buttons })
             .then(() => {
                 const status = document.getElementById('status');
 

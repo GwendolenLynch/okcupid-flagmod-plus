@@ -7,16 +7,18 @@ class FlagmodPlusUpdate {
      * @returns {void}
      */
     updateSchema() {
-        browser.storage.sync.get(null, (items) => {
-            // Fix incorrect schema before v0.9.5
-            if (typeof items.buttons === 'undefined' && items.standard !== 'undefined') {
-                this.storage.sync.remove(['standard', 'custom']);
-                this.storage.sync.set({
-                    settings_schema: 1,
-                    buttons: items,
-                });
-            }
-        });
+        browser.storage.sync
+            .get(null)
+            .then((items) => {
+                // Fix incorrect schema before v0.9.5
+                if (typeof items.buttons === 'undefined' && items.standard !== 'undefined') {
+                    this.storage.sync.remove(['standard', 'custom']);
+                    this.storage.sync.set({
+                        settings_schema: 1,
+                        buttons: items,
+                    });
+                }
+            });
     }
 
     /**
@@ -25,19 +27,21 @@ class FlagmodPlusUpdate {
      * @returns {void}
      */
     updateButtonsStandard() {
-        browser.storage.sync.get(null, (items) => {
-            const standard = items.standard || null;
+        browser.storage.sync
+            .get(null)
+            .then((items) => {
+                const standard = items.standard || null;
 
-            if (Array.isArray(standard)) {
-                const arrayToObject = array => array.reduce((obj, item) => {
-                    const key = item.key.replace('comment-', '');
-                    obj[key] = item;
-                    return obj;
-                }, {});
-                items.standard = arrayToObject(standard);
-                browser.storage.sync.set(items);
-            }
-        });
+                if (Array.isArray(standard)) {
+                    const arrayToObject = array => array.reduce((obj, item) => {
+                        const key = item.key.replace('comment-', '');
+                        obj[key] = item;
+                        return obj;
+                    }, {});
+                    items.standard = arrayToObject(standard);
+                    browser.storage.sync.set(items);
+                }
+            });
     }
 }
 

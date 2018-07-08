@@ -2,24 +2,25 @@
 
 class FlagmodPlus {
     static load() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
         const options = FlagmodPlusDefaults.get();
         const { buttons } = options.buttons;
 
-        storage.sync.get(buttons, (config) => {
-            fetch(chrome.runtime.getURL('html/vote-form.html'))
-                .then(response => response.text())
-                .then((html) => {
-                    const form = FlagmodPlus.createVotingForm(html);
+        browser.storage.sync
+            .get(buttons)
+            .then((config) => {
+                fetch(chrome.runtime.getURL('html/vote-form.html'))
+                    .then(response => response.text())
+                    .then((html) => {
+                        const form = FlagmodPlus.createVotingForm(html);
 
-                    FlagmodPlus.moveComments();
-                    FlagmodPlus.addButtons(config.standard, form);
-                    FlagmodPlus.addButtonsCustom(config.custom, form);
-                    FlagmodPlus.addEventListeners();
-                    FlagmodPlus.setImageLayout();
-                    FlagmodPlus.addImageSearchLinks();
-                });
-        });
+                        FlagmodPlus.moveComments();
+                        FlagmodPlus.addButtons(config.buttons.standard, form);
+                        FlagmodPlus.addButtonsCustom(config.buttons.custom, form);
+                        FlagmodPlus.addEventListeners();
+                        FlagmodPlus.setImageLayout();
+                        FlagmodPlus.addImageSearchLinks();
+                    });
+            });
     }
 
     /**

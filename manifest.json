@@ -24,6 +24,7 @@
     "content_scripts": [
         {
             "js": [
+                "lib/browser-polyfill.js",
                 "js/defaults.js",
                 "js/main.js"
             ],
@@ -39,6 +40,7 @@
     ],
     "background": {
         "scripts": [
+            "lib/browser-polyfill.js",
             "js/background.js"
         ]
     }

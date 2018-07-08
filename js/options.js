@@ -2,29 +2,24 @@
 
 class FlagmodPlusOptions {
     static clearOptions() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
-
-        storage.sync.clear();
+        browser.storage.sync.clear();
     }
 
     static dumpOptions() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
-
-        storage.sync.get(null, (options) => {
-            console.log(options);
-        });
+        browser.storage.sync
+            .get(null)
+            .then((options) => {
+                console.log(options);
+            });
     }
 
     static resetOptions() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
-
         if (window.confirm('Do you want to reset options to the defaults?')) {
             storage.sync.set(FlagmodPlusDefaults.get());
         }
     }
 
     static saveOptions() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
         const options = FlagmodPlusDefaults.get();
         const buttons = options.buttons;
 
@@ -39,32 +34,34 @@ class FlagmodPlusOptions {
             buttons.custom[index].comment = document.getElementById(`custom-${index}-comment`).value;
         });
 
-        storage.sync.set({'buttons': buttons}, () => {
-            const status = document.getElementById('status');
+        browser.storage.sync
+            .set({'buttons': buttons})
+            .then(() => {
+                const status = document.getElementById('status');
 
-            status.textContent = 'Options saved.';
-            setTimeout(() => { status.textContent = ''; }, 1000);
-        });
+                status.textContent = 'Options saved.';
+                setTimeout(() => { status.textContent = ''; }, 1000);
+            });
     }
 
     static restoreOptions() {
-        const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
         const options = FlagmodPlusDefaults.get();
+        browser.storage.sync
+            .get(options)
+            .then((items) => {
+                const buttons = items.buttons || {};
 
-        storage.sync.get(options, (items) => {
-            const buttons = items.buttons || {};
+                Object.entries(buttons.standard).forEach(([key, standard]) => {
+                    document.getElementById(standard.key).value = standard.comment;
+                });
 
-            Object.entries(buttons.standard).forEach(([key, standard]) => {
-                document.getElementById(standard.key).value = standard.comment;
+                Object.entries(buttons.custom).forEach(([key, custom]) => {
+                    document.getElementById(`custom-${key}`).checked = custom.enable;
+                    document.getElementById(`custom-${key}-vote`).value = custom.vote;
+                    document.getElementById(`custom-${key}-label`).value = custom.label;
+                    document.getElementById(`custom-${key}-comment`).value = custom.comment;
+                });
             });
-
-            Object.entries(buttons.custom).forEach(([key, custom]) => {
-                document.getElementById(`custom-${key}`).checked = custom.enable;
-                document.getElementById(`custom-${key}-vote`).value = custom.vote;
-                document.getElementById(`custom-${key}-label`).value = custom.label;
-                document.getElementById(`custom-${key}-comment`).value = custom.comment;
-            });
-        });
     }
 }
 

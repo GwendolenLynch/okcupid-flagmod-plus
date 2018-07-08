@@ -2,14 +2,13 @@
 
 class FlagmodPlusUpdate {
     constructor() {
-        this.storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
     }
 
     /**
      * Update options schema.
      */
     updateSchema() {
-        this.storage.sync.get(null, (items) => {
+        browser.storage.sync.get(null, (items) => {
             // Fix incorrect schema before v0.9.5
             if (typeof items.buttons === 'undefined' && items.standard !== 'undefined') {
                 this.storage.sync.remove(['standard', 'custom']);
@@ -25,7 +24,7 @@ class FlagmodPlusUpdate {
      * Change 'options.buttons.standard' values to an object.
      */
     updateButtonsStandard() {
-        this.storage.sync.get(null, (items) => {
+        browser.storage.sync.get(null, (items) => {
             const standard = items.standard || null;
 
             if (Array.isArray(standard)) {
@@ -35,13 +34,13 @@ class FlagmodPlusUpdate {
                     return obj;
                 }, {});
                 items.standard = arrayToObject(standard);
-                this.storage.sync.set(items);
+                browser.storage.sync.set(items);
             }
         });
     }
 }
 
-const b = typeof browser === 'undefined' ? chrome : browser;
+const b = (typeof browser !== 'undefined') ? browser : chrome;
 
 b.runtime.onInstalled.addListener((details) => {
     console.log('Flagmod Plus install events running');

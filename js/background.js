@@ -50,3 +50,7 @@ b.runtime.onInstalled.addListener((details) => {
     update.updateSchema();
     update.updateButtonsStandard();
 });
+
+b.browserAction.onClicked.addListener(() => {
+    b.runtime.openOptionsPage();
+});

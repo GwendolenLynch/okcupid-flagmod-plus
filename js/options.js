@@ -15,7 +15,7 @@ class FlagmodPlusOptions {
 
     static resetOptions() {
         if (window.confirm('Do you want to reset options to the defaults?')) {
-            storage.sync.set(FlagmodPlusDefaults.get());
+            browser.storage.sync.set(FlagmodPlusDefaults.get());
         }
     }
 

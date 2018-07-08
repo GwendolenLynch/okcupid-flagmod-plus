@@ -19,7 +19,7 @@ class FlagmodPlusOptions {
         }
     }
 
-    static saveOptions() {
+    static saveOptions(e) {
         const options = FlagmodPlusDefaults.get();
         const buttons = options.buttons;
 
@@ -42,6 +42,8 @@ class FlagmodPlusOptions {
                 status.textContent = 'Options saved.';
                 setTimeout(() => { status.textContent = ''; }, 1000);
             });
+
+        e.preventDefault();
     }
 
     static restoreOptions() {

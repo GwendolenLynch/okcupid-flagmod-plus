@@ -21,7 +21,7 @@ class FlagmodPlusOptions {
 
     static saveOptions(e) {
         const options = FlagmodPlusDefaults.get();
-        const buttons = options.buttons;
+        const { buttons } = options.buttons;
 
         buttons.standard.forEach((standard, index) => {
             buttons.standard[index].comment = document.getElementById(standard.key).value;

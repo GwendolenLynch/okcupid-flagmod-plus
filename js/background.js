@@ -1,11 +1,10 @@
 'use strict';
 
 class FlagmodPlusUpdate {
-    constructor() {
-    }
-
     /**
      * Update options schema.
+     *
+     * @returns {void}
      */
     updateSchema() {
         browser.storage.sync.get(null, (items) => {
@@ -22,6 +21,8 @@ class FlagmodPlusUpdate {
 
     /**
      * Change 'options.buttons.standard' values to an object.
+     *
+     * @returns {void}
      */
     updateButtonsStandard() {
         browser.storage.sync.get(null, (items) => {

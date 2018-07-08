@@ -4,7 +4,7 @@ class FlagmodPlus {
     static load() {
         const storage = (typeof browser !== 'undefined') ? browser.storage : chrome.storage;
         const options = FlagmodPlusDefaults.get();
-        const buttons = options.buttons;
+        const { buttons } = options.buttons;
 
         storage.sync.get(buttons, (config) => {
             fetch(chrome.runtime.getURL('html/vote-form.html'))
@@ -58,6 +58,7 @@ class FlagmodPlus {
     /**
      * @param {Object} buttons
      * @param {HTMLElement} form
+     * @returns {void}
      */
     static addButtons(buttons, form) {
         const div = document.getElementById('flagmod_plus_quick_vote');
@@ -85,6 +86,7 @@ class FlagmodPlus {
     /**
      * @param {Object} config
      * @param {HTMLElement} div
+     * @returns {void}
      */
     static createButtonElement(config, div) {
         const button = document.createElement('button');
@@ -105,7 +107,7 @@ class FlagmodPlus {
      * @returns {string}
      */
     static getVoteButtonColour(vote) {
-        vote = parseInt(vote);
+        vote = parseInt(vote, 10);
         if (vote === 11) {
             return 'red';
         }

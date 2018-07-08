@@ -4,10 +4,11 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
+        "webextensions": true,
     },
     "parserOptions": {
-        "ecmaVersion": 2017,
-        "sourceType": "module",
+        "ecmaVersion": 2018,
+        "sourceType": "script",
         "ecmaFeatures": {
             "jsx": true
         }
@@ -61,6 +62,7 @@ module.exports = {
         ],
         "space-infix-ops": "error",
         "space-in-parens": "error",
+        "strict": [2, "global"],
         "valid-jsdoc": [
             "error", {
                 "requireParamDescription": false,

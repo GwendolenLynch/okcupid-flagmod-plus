@@ -3,7 +3,7 @@
     "name": "OkCupid Flagmod Plus",
     "short_name": "Flagmod Plus",
     "description": "Extension to enhance OkCupid Flagmod functionality",
-    "version": "0.9.8",
+    "version": "0.9.9",
     "icons": {
         "16": "images/icon16.png",
         "48": "images/icon48.png",

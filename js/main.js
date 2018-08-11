@@ -156,6 +156,11 @@ class FlagmodPlus {
                 if (nodeClass === 'flag_footnote') {
                     divImage.appendChild(reports.firstChild);
                 }
+                if (nodeClass === 'essay_type') {
+                    const caption = reports.firstChild.nextSibling;
+                    divImage.appendChild(reports.firstChild);
+                    divImage.appendChild(caption);
+                }
             }
             reports.removeChild(reports.firstChild);
         }

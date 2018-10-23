@@ -2,23 +2,39 @@
     "name": "okcupid-flagmod-plus",
     "version": "1.0.0",
     "description": "Extension to enhance OkCupid Flagmod functionality",
-    "main": "js/main.js",
+    "main": "src/flagmod-plus/main.js",
     "repository": "https://github.com/GawainLynch/okcupid-flagmod-plus.git",
     "author": "Gawain Lynch <gawain.lynch@gmail.com>",
     "license": "MIT",
+    "dependencies": {
+        "@babel/runtime": "^7.2.0",
+        "bulma": "^0.7.2",
+        "webextension-polyfill": "^0.3.1"
+    },
     "devDependencies": {
-        "eslint": "^5.0.1",
-        "eslint-config-airbnb": "^17.0.0",
-        "eslint-plugin-import": "^2.13.0",
-        "eslint-plugin-jsx-a11y": "^6.1.0",
-        "eslint-plugin-react": "^7.10.0"
+        "@babel/plugin-transform-runtime": "^7.2.0",
+        "@symfony/webpack-encore": "^0.22.2",
+        "eslint": "^5.10.0",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-jsx-a11y": "^6.1.2",
+        "eslint-plugin-node": "^8.0.0",
+        "eslint-plugin-react": "^7.11.1",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.0.1",
+        "webpack-chrome-extension-reloader": "^1.0.0",
+        "webpack-notifier": "^1.6.0"
     },
     "scripts": {
-        "lint": "eslint js/",
-        "lint-fix": "eslint --fix js/"
+        "lint": "eslint src/",
+        "lint-fix": "eslint --fix src/",
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production"
     },
-    "dependencies": {
-        "bulma": "^0.7.1",
-        "webextension-polyfill": "^0.2.1"
-    }
+    "browserslist": [
+        "last 2 Chrome versions",
+        "last 2 Firefox versions"
+    ]
 }

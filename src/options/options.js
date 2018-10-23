@@ -1,4 +1,7 @@
-'use strict';
+import browser from 'webextension-polyfill';
+import defaults from '../defaults';
+
+require('../../scss/options.scss');
 
 class FlagmodPlusOptions {
     static clearOptions() {
@@ -15,21 +18,20 @@ class FlagmodPlusOptions {
 
     static resetOptions() {
         if (window.confirm('Do you want to reset options to the defaults?')) {
-            browser.storage.sync.set(FlagmodPlusDefaults.get());
+            browser.storage.sync.set(defaults);
         }
     }
 
     static saveOptions(e) {
-        const options = FlagmodPlusDefaults.get();
-        const { buttons } = options;
-
         e.preventDefault();
 
-        buttons.standard.forEach((standard, index) => {
+        const { buttons } = defaults;
+
+        defaults.standard.forEach((standard, index) => {
             buttons.standard[index].comment = document.getElementById(standard.key).value;
         });
 
-        buttons.custom.forEach((custom, index) => {
+        defaults.custom.forEach((custom, index) => {
             buttons.custom[index].enable = document.getElementById(`custom-${index}`).checked;
             buttons.custom[index].vote = document.getElementById(`custom-${index}-vote`).value;
             buttons.custom[index].label = document.getElementById(`custom-${index}-label`).value;
@@ -47,9 +49,8 @@ class FlagmodPlusOptions {
     }
 
     static restoreOptions() {
-        const options = FlagmodPlusDefaults.get();
         browser.storage.sync
-            .get(options)
+            .get(defaults)
             .then((items) => {
                 const buttons = items.buttons || {};
 

@@ -1,14 +1,15 @@
 module.exports = {
     "root": true,
+    "plugins": ["node"],
     "extends": "airbnb",
     "env": {
         "browser": true,
         "es6": true,
-        "webextensions": true,
+        "node": true,
     },
     "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "script",
+        "ecmaVersion": 2017,
+        "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
         }
@@ -31,6 +32,18 @@ module.exports = {
         ],
         "no-caller": "error",
         "no-console": "off",
+        "node/no-deprecated-api": "error",
+        "node/no-missing-import": "error",
+        "node/no-missing-require": [
+            "error", {
+                "allowModules": [
+                    "webpack"
+                ]
+            }
+        ],
+        "node/no-unpublished-bin": "error",
+        "node/no-unpublished-require": "error",
+        "node/process-exit-as-throw": "error",
         "no-empty": "off",
         "no-extra-bind": "warn",
         "no-extra-semi": "error",
@@ -62,7 +75,6 @@ module.exports = {
         ],
         "space-infix-ops": "error",
         "space-in-parens": "error",
-        "strict": [2, "global"],
         "valid-jsdoc": [
             "error", {
                 "requireParamDescription": false,

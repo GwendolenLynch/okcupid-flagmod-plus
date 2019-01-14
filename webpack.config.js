@@ -7,7 +7,7 @@ Encore
     .setOutputPath('dist/app/')
     .setPublicPath('/app/')
 
-    .addEntry('background', './src/background/background.js')
+    .addEntry('background', './src/background/background.ts')
     .addEntry('profile-page', './src/profile-page/main.ts')
     .addEntry('page-script', './src/profile-page/page-script.ts')
     .addEntry('flagmod-plus', './src/flagmod-plus/main.js')

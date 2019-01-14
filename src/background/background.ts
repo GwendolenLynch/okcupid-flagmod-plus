@@ -1,5 +1,5 @@
-import FlagmodPlusUpdater from './updater';
-import Tabs from './tabs';
+import { Tabs } from './tabs';
+import { FlagmodPlusUpdater } from './updater';
 
 (() => {
     FlagmodPlusUpdater.addListeners();

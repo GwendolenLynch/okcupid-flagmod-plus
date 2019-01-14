@@ -8,7 +8,10 @@ Encore
     .setPublicPath('/app/')
 
     .addEntry('background', './src/background/background.js')
+    .addEntry('profile-page', './src/profile-page/main.ts')
+    .addEntry('page-script', './src/profile-page/page-script.ts')
     .addEntry('flagmod-plus', './src/flagmod-plus/main.js')
+    .addEntry('photo-review', './src/photo-review/photo-review.ts')
     .addEntry('options', './src/options/options.js')
 
     // https://symfony.com/doc/current/frontend.html#adding-more-features

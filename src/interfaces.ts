@@ -1,3 +1,29 @@
+export interface IOptionButtonStandard {
+    label: string;
+    comment: string;
+    key: string;
+    vote: number;
+}
+
+export interface IOptionButtonCustom {
+    enable: boolean;
+    vote: number;
+    label: string;
+    comment: string;
+}
+
+export interface IOptions {
+    settings_schema: 1;
+    buttons: {
+        standard: IOptionButtonStandard[],
+        custom: IOptionButtonCustom[],
+    };
+    profile: {
+        last_login: boolean;
+        review_panel: boolean;
+    };
+}
+
 export interface IProfile {
     blocked: boolean;
     bookmarked: boolean;

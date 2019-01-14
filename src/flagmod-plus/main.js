@@ -2,7 +2,7 @@ import browser from 'webextension-polyfill';
 import VotingForm from './voting-form';
 import VotingImage from './voting-image';
 import VotingComments from './voting-comments';
-import defaults from '../defaults';
+import { defaults } from '../defaults';
 
 class FlagmodPlus {
     static async load() {

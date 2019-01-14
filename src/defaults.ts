@@ -1,4 +1,7 @@
-const defaults = {
+import { IOptions } from './interfaces';
+
+// tslint:disable
+export const defaults = {
     settings_schema: 1,
     buttons: {
         standard: [
@@ -72,6 +75,8 @@ const defaults = {
             },
         ],
     },
-};
-
-export default defaults;
+    profile: {
+        last_login: true,
+        review_panel: true,
+    },
+} as IOptions;

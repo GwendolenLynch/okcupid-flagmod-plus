@@ -13,3 +13,25 @@ Web Store Links
 
 [Firefox]: https://addons.mozilla.org/en-GB/firefox/addon/okcupid-flagmod-plus/
 [Chrome]: https://chrome.google.com/webstore/detail/okcupid-flagmod-plus/acdphgbkiblaikiieehaaemjdeajnofm
+
+
+Building
+--------
+
+Install required libraries:
+
+```bash
+yarn install
+```
+
+Compile TypeScript code, and recompile on changes:
+
+```bash
+yarn watch
+```
+
+Compile TypeScript code:
+
+```bash
+yarn build
+```

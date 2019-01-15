@@ -10,7 +10,7 @@ Encore
     .addEntry('background', './src/background/background.ts')
     .addEntry('profile-page', './src/profile-page/main.ts')
     .addEntry('page-script', './src/profile-page/page-script.ts')
-    .addEntry('flagmod-plus', './src/flagmod-plus/main.js')
+    .addEntry('flagmod-plus', './src/flagmod-plus/main.ts')
     .addEntry('photo-review', './src/photo-review/photo-review.ts')
     .addEntry('options', './src/options/options.ts')
 

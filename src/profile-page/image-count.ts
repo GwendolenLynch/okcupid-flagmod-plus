@@ -12,8 +12,8 @@ export class ImageCount {
         detailsIcon.setAttribute('class', 'matchprofile-details-icon');
         section.appendChild(detailsIcon);
 
-        const icon = document.createElement('img');
-        icon.src = 'https://cdn.okccdn.com/media/img/questions/agree.png';
+        const icon = document.createElement('i');
+        icon.setAttribute('class', 'fp-icon picture');
         detailsIcon.appendChild(icon);
 
         const detailsText = document.createElement('div');

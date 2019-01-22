@@ -1,0 +1,23 @@
+.fp-icon {
+    position: relative;
+}
+
+.fp-icon:before {
+    font-family: FontAwesome, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+
+    color: inherit;
+    font-size: 16px;
+    position: absolute;
+}
+
+.angle-down:before {
+    content: "\f107";
+}
+
+.picture:before {
+    content: "\f03e";
+}
+

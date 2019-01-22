@@ -6,7 +6,7 @@
     "author": "Gawain Lynch <gawain.lynch@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "@babel/runtime": "^7.2.0",
+        "@babel/runtime": "^7.3.1",
         "bulma": "^0.7.2",
         "webextension-polyfill": "^0.3.1"
     },
@@ -14,19 +14,19 @@
         "@babel/plugin-transform-runtime": "^7.2.0",
         "@symfony/webpack-encore": "^0.22.4",
         "@types/firefox-webext-browser": "^65.0.0",
-        "eslint": "^5.12.0",
+        "eslint": "^5.12.1",
         "eslint-config-airbnb": "^17.1.0",
         "eslint-plugin-import": "^2.14.0",
         "eslint-plugin-jsx-a11y": "^6.1.2",
         "eslint-plugin-node": "^8.0.1",
-        "eslint-plugin-react": "^7.12.3",
+        "eslint-plugin-react": "^7.12.4",
         "node-sass": "^4.11.0",
         "sass-loader": "^7.0.1",
         "ts-loader": "^5.3.3",
         "tslint": "^5.12.1",
-        "typescript": "^3.2.2",
+        "typescript": "^3.2.4",
         "typewiz-webpack": "^1.2.3",
-        "webpack-chrome-extension-reloader": "^1.1.1",
+        "webpack-chrome-extension-reloader": "^1.1.2",
         "webpack-notifier": "^1.6.0"
     },
     "scripts": {
@@ -42,4 +42,3 @@
         "last 2 Firefox versions"
     ]
 }
-

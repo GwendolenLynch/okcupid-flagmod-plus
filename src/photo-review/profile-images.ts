@@ -1,4 +1,5 @@
 import { IProfile, IProfilePhotoMeta } from '../interfaces';
+import { ImageCount } from '../profile-page/image-count';
 import { Buttons } from './buttons';
 import { ReportComment } from './report-comment';
 
@@ -10,6 +11,7 @@ import { ReportComment } from './report-comment';
  */
 export class ProfileImages {
     public static create(profile: IProfile, token: string, viewport: HTMLElement): void {
+        ImageCount.add(profile);
         profile.photos.forEach((imageMeta) => {
             if (imageMeta.info.path) {
                 const columns = document.createElement('div');

@@ -17,9 +17,10 @@ export class ImageCount {
         detailsIcon.appendChild(icon);
 
         const detailsText = document.createElement('div');
+        const count = profile.photos[0].info.has_photos ? profile.photos.length : 0;
         detailsText.setAttribute('class', 'matchprofile-details-text');
         detailsText.setAttribute('style', 'color: rgb(42, 47, 53);');
-        detailsText.innerText = `${profile.photos.length} profile image(s)`;
+        detailsText.innerText = `${count} profile image(s)`;
         section.appendChild(detailsText);
     }
 }

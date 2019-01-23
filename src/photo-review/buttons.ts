@@ -1,5 +1,5 @@
 import { IProfile } from '../interfaces';
-import { ButtonEvent } from './button-event';
+import { ButtonEventHandler } from './button-event-handler';
 import { buttonMeta } from './button-meta';
 
 export class Buttons {
@@ -31,7 +31,7 @@ export class Buttons {
 
             button.innerText = meta.text;
 
-            const buttonEventHandler = new ButtonEvent(button, input, profile, token);
+            const buttonEventHandler = new ButtonEventHandler(button, input, profile, token);
             button.addEventListener('click', (event: MouseEvent) => {
                 buttonEventHandler.onClick(event);
             });

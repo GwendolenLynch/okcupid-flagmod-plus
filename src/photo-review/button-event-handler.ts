@@ -1,6 +1,6 @@
 import { IProfile } from '../interfaces';
 
-export class ButtonEvent {
+export class ButtonEventHandler {
     private readonly button: HTMLButtonElement;
     private readonly input: HTMLInputElement;
     private readonly profile: { userid: string };

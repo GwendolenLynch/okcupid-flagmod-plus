@@ -1,3 +1,4 @@
+import { hosts } from '../hosts';
 import { IProfile } from '../interfaces';
 
 export class ButtonEventHandler {
@@ -29,7 +30,7 @@ export class ButtonEventHandler {
 
     private report(): void {
         const request = new Request(
-            `https://www.okcupid.com/1/apitun/profile/${this.profile.userid}/report`,
+            `${hosts.okCupid.profileApi}/${this.profile.userid}/report`,
             {
                 body: JSON.stringify({
                     comment: this.input.value,

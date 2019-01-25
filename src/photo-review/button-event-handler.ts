@@ -14,7 +14,7 @@ export class ButtonEventHandler {
         this.token = token;
     }
 
-    public onClick(event: Event): void {
+    public onClick(event: MouseEvent): void {
         this.button.classList.add('is-loading');
         if (this.button.parentElement) {
             this.button.parentElement.setAttribute('disabled', 'disabled');

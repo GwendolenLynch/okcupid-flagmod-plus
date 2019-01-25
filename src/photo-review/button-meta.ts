@@ -1,34 +1,46 @@
+// tslint:disable:object-literal-sort-keys
+
+export interface IButtonMeta {
+    id: string;
+    text: string;
+    class: string;
+    comment: string;
+    label: string;
+    type: number;
+
+}
+
 export const buttonMeta = [
     {
+        id: 'ntu',
+        text: 'NTU',
         class: 'is-dark',
         comment: '',
-        id: 'ntu',
         label: '9',
-        text: 'NTU',
         type: 0,
     },
     {
+        id: 'nudity',
+        text: 'Nudity',
         class: 'is-danger',
         comment: '',
-        id: 'nudity',
         label: '8',
-        text: 'Nudity',
         type: 0,
     },
     {
+        id: 'offensive',
+        text: 'Offensive',
         class: 'is-warning',
         comment: '',
-        id: 'offensive',
         label: '7',
-        text: 'Offensive',
         type: 0,
     },
     {
+        id: 'other',
+        text: 'Other',
         class: 'is-info',
         comment: '',
-        id: 'other',
         label: '10',
-        text: 'Other',
         type: 0,
     },
 ];

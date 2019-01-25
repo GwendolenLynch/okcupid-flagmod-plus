@@ -1,6 +1,6 @@
 import { IProfile } from '../interfaces';
 import { ButtonEventHandler } from './button-event-handler';
-import { buttonMeta } from './button-meta';
+import { buttonMeta, IButtonMeta } from './button-meta';
 
 export class Buttons {
     public static add(
@@ -15,7 +15,7 @@ export class Buttons {
 
         parent.appendChild(columns);
 
-        buttonMeta.forEach((meta) => {
+        buttonMeta.forEach((meta: IButtonMeta) => {
             const column = document.createElement('div');
             const button = document.createElement('button');
 

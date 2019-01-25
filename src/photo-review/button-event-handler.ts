@@ -28,7 +28,7 @@ export class ButtonEventHandler {
 
     }
 
-    private report(): void {
+    private async report(): Promise<void> {
         const request = new Request(
             `${hosts.okCupid.profileApi}/${this.profile.userid}/report`,
             {

@@ -17,7 +17,7 @@ export class LastLogin {
     }
 
     private static getLastLoginHtml(profile: IProfile): string {
-        // @tslint:disable:object-literal-sort-keys
+        // tslint:disable:object-literal-sort-keys
         const dateOptions = {
             year: 'numeric',
             month: 'long',

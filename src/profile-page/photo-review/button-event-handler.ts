@@ -1,5 +1,5 @@
-import { hosts } from '../hosts';
-import { IProfile } from '../interfaces';
+import { hosts } from '../../hosts';
+import { IProfile } from '../../interfaces';
 
 export class ButtonEventHandler {
     private readonly button: HTMLButtonElement;
@@ -53,8 +53,8 @@ export class ButtonEventHandler {
         );
 
         fetch(request)
-            .then((response: Response) => response.json())
-            .then((response: Response) => {
+            .then(async (response: Response) => response.json())
+            .then((json: JSON) => {
                 this.button.classList.remove('is-loading');
                 this.button.innerText = '✔';
             })

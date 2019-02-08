@@ -8,11 +8,11 @@ Encore
     .setPublicPath('/app/')
 
     .addEntry('background', './src/background/background.ts')
-    .addEntry('profile-page', './src/profile-page/main.ts')
+    .addEntry('profile-page', './src/profile-page/index.ts')
     .addEntry('page-script', './src/profile-page/page-script.ts')
-    .addEntry('flagmod-plus', './src/flagmod-plus/main.ts')
-    .addEntry('photo-review', './src/photo-review/photo-review.ts')
-    .addEntry('options', './src/options/options.ts')
+    .addEntry('flagmod-plus', './src/flagmod-plus/index.ts')
+    .addEntry('photo-review', './src/profile-page/photo-review/photo-review.ts')
+    .addEntry('options', './src/options/index.ts')
 
     // https://symfony.com/doc/current/frontend.html#adding-more-features
     .cleanupOutputBeforeBuild()
@@ -27,10 +27,10 @@ Encore
         babelConfig.plugins.push(['@babel/plugin-transform-runtime', { regenerator: true }]);
     });
 
-if (!Encore.isProduction()) {
-    console.log(`${chalk.bgYellow.black('  WARNING  ')} ${chalk.yellow('Adding plugin: ChromeExtensionReloader')}`);
-    Encore.addPlugin(new ChromeExtensionReloader());
-}
+// if (!Encore.isProduction()) {
+//     console.log(`${chalk.bgYellow.black('  WARNING  ')} ${chalk.yellow('Adding plugin: ChromeExtensionReloader')}`);
+//     Encore.addPlugin(new ChromeExtensionReloader());
+// }
 
 const config = Encore.getWebpackConfig();
 

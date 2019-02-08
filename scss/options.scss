@@ -1,10 +1,2 @@
 @import "app";
-
-html {
-    min-width: 769px;
-    min-height: 350px;
-}
-
-.section {
-    padding: 0 3px 0 3px;
-}
+@import "~bulma-dashboard/src/bulma-dashboard";

@@ -1,6 +1,6 @@
-import '../../scss/photo-review.scss';
+import '../../../scss/photo-review.scss';
+import { IProfile } from '../../interfaces';
 
-import { IProfile } from '../interfaces';
 import { ProfileImages } from './profile-images';
 
 /**

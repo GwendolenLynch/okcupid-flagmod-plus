@@ -15,7 +15,7 @@
     },
     "options_ui": {
         "page": "html/options.html",
-        "open_in_tab": false
+        "open_in_tab": true
     },
     "permissions": [
         "storage",
@@ -44,7 +44,7 @@
         "app/page-script.js",
         "app/photo-review.js",
         "app/photo-review.css",
-        "html/vote-form.html",
+        "html/form/flagmod-vote-buttons.html",
         "images/logo-*.svg"
     ],
     "background": {

@@ -1,10 +1,18 @@
-declare var ACCESS_TOKEN;
-declare var profileParams;
+import { IProfile } from '../interfaces';
 
-window.addEventListener('load', (event: Event) => {
+declare var ACCESS_TOKEN: string;
+declare var profileParams: { profile: IProfile } | undefined;
+
+const loadEvent = (event: Event) => {
     if (typeof profileParams === 'undefined') { return; }
-    window.postMessage({action: 'POST_PARAMS', payload: {
-            profile: profileParams,
+    const message = {
+        action: 'POST_PARAMS',
+        payload: {
+            profile: profileParams.profile,
             token: ACCESS_TOKEN,
-        }}, '*');
-}, false);
+        },
+    };
+    window.postMessage(message, '*');
+};
+
+window.addEventListener('load', loadEvent, false);

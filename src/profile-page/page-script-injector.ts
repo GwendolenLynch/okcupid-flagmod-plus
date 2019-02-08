@@ -1,4 +1,4 @@
-import browser from 'webextension-polyfill';
+import { browser } from 'webextension-polyfill-ts';
 
 export class PageScriptInjector {
     public static inject(): void {
@@ -9,8 +9,8 @@ export class PageScriptInjector {
 
         css.rel = 'stylesheet';
         css.type = 'text/css';
-        css.href = browser.extension.getURL('app/photo-review.css');
-        script.src = browser.extension.getURL('app/page-script.js');
+        css.href = browser.runtime.getURL('app/photo-review.css');
+        script.src = browser.runtime.getURL('app/page-script.js');
 
         target.appendChild(css);
         target.appendChild(script);

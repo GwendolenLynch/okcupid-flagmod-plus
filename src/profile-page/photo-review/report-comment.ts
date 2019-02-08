@@ -1,4 +1,4 @@
-import { IProfile } from '../interfaces';
+import { IProfile } from '../../interfaces';
 
 export class ReportComment {
     public static add(column: HTMLElement, imageId: string, profile: IProfile, token: string): HTMLInputElement {

@@ -1,4 +1,4 @@
-import browser from 'webextension-polyfill';
+import { browser } from 'webextension-polyfill-ts';
 import { RisLinks } from './ris-links';
 
 export class VotingImage {
@@ -12,7 +12,7 @@ export class VotingImage {
 
         while (reports.hasChildNodes()) {
             const child = reports.firstChild as HTMLElement;
-            if (typeof child.classList !== 'undefined') {
+            if (child.classList) {
                 const nodeClass = child.classList.value;
                 if (nodeClass === 'flag_text') {
                     divImage.appendChild(child);

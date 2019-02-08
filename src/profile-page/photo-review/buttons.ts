@@ -1,4 +1,4 @@
-import { IProfile } from '../interfaces';
+import { IProfile } from '../../interfaces';
 import { ButtonEventHandler } from './button-event-handler';
 import { buttonMeta, IButtonMeta } from './button-meta';
 

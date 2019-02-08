@@ -1,4 +1,4 @@
-import { IProfile } from '../interfaces';
+import { IProfile } from '../../interfaces';
 
 export class LastLogin {
     public static add(profile: IProfile): void {

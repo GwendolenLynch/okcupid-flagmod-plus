@@ -1,5 +1,5 @@
-import { IProfile, IProfilePhotoMeta } from '../interfaces';
-import { ImageCount } from '../profile-page/image-count';
+import { IProfile, IProfilePhotoMeta } from '../../interfaces';
+import { ImageCount } from '../image-count';
 import { Buttons } from './buttons';
 import { ReportComment } from './report-comment';
 

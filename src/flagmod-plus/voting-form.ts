@@ -1,13 +1,30 @@
 /**
- * Voting replacement form.
+ * Voting replacement voting.
  */
-import { IOptionButtonCustom, IOptionButtonStandard } from '../interfaces';
+import { browser } from 'webextension-polyfill-ts';
+
+import { IProfileOptions, IVoteOptions, IVotingOptions } from '../options/schema-interfaces';
 
 export class VotingForm {
     public form: HTMLFormElement;
+    private readonly voting: IVotingOptions;
+    private readonly profile: IProfileOptions;
 
-    public constructor() {
+    public constructor(voting: IVotingOptions, profile: IProfileOptions) {
+        this.voting = voting;
+        this.profile = profile;
         this.form = document.getElementById('flagmodform') as HTMLFormElement;
+    }
+
+    public async render(): Promise<void> {
+        return await fetch(browser.runtime.getURL('html/form/flagmod-vote-buttons.html'))
+            .then(async (response: Response) => response.text())
+            .then((formHtml: string) => {
+                this.build(formHtml);
+                this.addButtons();
+                this.addButtonsCustom();
+                this.addListeners();
+            });
     }
 
     public addListeners(): void {
@@ -37,7 +54,7 @@ export class VotingForm {
         this.form.submit();
     }
 
-    public create(html: string): HTMLElement | null {
+    public build(html: string): HTMLElement | null {
         const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
         const objectId = document.querySelector('input[name="objectid"') as HTMLInputElement;
 
@@ -52,19 +69,19 @@ export class VotingForm {
         return this.form;
     }
 
-    public addButtons(buttons: IOptionButtonStandard[]): void {
+    public addButtons(): void {
         const div = this.form.querySelector('#flagmod_plus_quick_vote') as HTMLElement;
 
-        buttons.forEach((buttonConfig) => {
-            VotingForm.createButton(buttonConfig, div);
+        this.voting.standard.forEach((button) => {
+            if (button.enable) { VotingForm.createButton(button, div); }
         });
     }
 
-    public addButtonsCustom(buttons: IOptionButtonCustom[]): void {
+    public addButtonsCustom(): void {
         const div = this.form.querySelector('#flagmod_plus_custom_vote') as HTMLElement;
         let unhidden = false;
 
-        buttons.forEach((buttonConfig) => {
+        this.voting.custom.forEach((buttonConfig) => {
             if (buttonConfig.enable) {
                 unhidden = true;
                 VotingForm.createButton(buttonConfig, div);
@@ -76,21 +93,21 @@ export class VotingForm {
         }
     }
 
-    private static createButton(config: IOptionButtonCustom | IOptionButtonStandard, div: HTMLElement): void {
+    private static createButton(config: IVoteOptions, div: HTMLElement): void {
         const button = document.createElement('button');
         const colour = VotingForm.getButtonColour(parseInt(String(config.vote), 10));
 
         button.setAttribute('type', 'button');
         button.setAttribute('class', `flatbutton ${colour}`);
         button.setAttribute('data-vote', String(config.vote));
-        button.setAttribute('data-comment', config.comment);
-        button.setAttribute('title', config.comment);
+        button.setAttribute('data-comment', config.comment || config.abbr);
+        button.setAttribute('title', config.comment || config.abbr);
         button.innerText = config.label;
 
         div.appendChild(button);
     }
 
-    private static getButtonColour(vote: number ): string {
+    private static getButtonColour(vote: number): string {
         if (vote === 1) { return 'blue'; }
         if (vote === 11) { return 'red'; }
 

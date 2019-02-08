@@ -730,6 +730,11 @@
   resolved "https://registry.yarnpkg.com/@types/firefox-webext-browser/-/firefox-webext-browser-65.0.3.tgz#e9b79daccd565fe21cef525da0188ee7cd940eab"
   integrity sha512-eydUmkhhp1DBuI6jAIyLN38AkJg4avSJ9xf49PsTXvU4J2+rs9+s3OfnUBXNIvszTs4Q2FHKRd3DBZt72U97bg==
 
+"@types/highlight.js@^9.12.3":
+  version "9.12.3"
+  resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
+  integrity sha512-pGF/zvYOACZ/gLGWdQH8zSwteQS1epp68yRcVLJMgUck/MjEn/FBYmPub9pXT8C1e4a8YZfHo1CKyV8q1vKUnQ==
+
 "@types/node@*":
   version "10.12.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
@@ -1509,6 +1514,11 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
+
+bulma-dashboard@^0.1.40:
+  version "0.1.40"
+  resolved "https://registry.yarnpkg.com/bulma-dashboard/-/bulma-dashboard-0.1.40.tgz#57e393a308ebca5746b7576817a6a77cc7224667"
+  integrity sha512-BkiGvhShPQx3ww3WnfH38OrTEr7s5qUmxfmiX5GZTee18gDXAU5imhBY9wJ6mzXq+tMBsa+PsLBheKggb9Llkw==
 
 bulma@^0.7.4:
   version "0.7.4"
@@ -3631,6 +3641,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highlight.js@^9.14.2:
+  version "9.15.6"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.6.tgz#72d4d8d779ec066af9a17cb14360c3def0aa57c4"
+  integrity sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -7078,6 +7093,11 @@ svgo@^1.0.0:
     stable "~0.1.6"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+sweetalert2@^8.8.0:
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-8.8.0.tgz#131d7f6c2bfb9e944f5ef187b2cc402b02a89d8c"
+  integrity sha512-z6042JdwNaTtITSvZAGIoHIXEcnkWjgR5LGqhtTHexmeXu9lH16fEGojTf/pbf7+ve73Nns3Pr0Cr8Qt+jcxsA==
 
 table@^5.2.3:
   version "5.2.3"

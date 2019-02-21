@@ -1,4 +1,5 @@
 import browser from 'webextension-polyfill';
+import { messageId } from '../constants';
 import { defaults } from '../defaults';
 import { IOptions } from '../interfaces';
 import { LastLogin } from '../last-login/last-login';
@@ -19,4 +20,6 @@ window.addEventListener('message', (event) => {
             if (options.profile.review_panel) { PhotoReview.run(response.profile, response.token); }
 
         });
+
+    browser.runtime.sendMessage(messageId, { response: response });
 });

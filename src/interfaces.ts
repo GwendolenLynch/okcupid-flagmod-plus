@@ -4,7 +4,7 @@ export interface IProfile {
     currentUserThumb: string;
     details: [{}];
     displayname: string;
-    essays: [{}];
+    essays: IEssay[];
     firstMessage: null | boolean;
     isLoggedIn: boolean;
     lastLogin: number;
@@ -55,6 +55,27 @@ export interface IProfile {
     };
     userid: string;
     username: string;
+}
+
+export interface IEssay {
+    clean_content: string;
+    content: string;
+    contents: string;
+    essay_groupid: number;
+    essay_pics: IEssayPicture[];
+    essayid: 12;
+    group_type: number;
+    id: number;
+    placeholder: string;
+    raw_content: string;
+    rawtext: string;
+    sectionTitle: string;
+    title: string;
+}
+
+export interface IEssayPicture {
+    offset: number;
+    picid: string;
 }
 
 export interface IOcsMessaging {

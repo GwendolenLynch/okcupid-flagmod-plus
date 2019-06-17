@@ -9,7 +9,7 @@ Encore
 
     .addEntry('background', './src/background/background.ts')
     .addEntry('profile-page', './src/profile-page/index.ts')
-    .addEntry('page-script', './src/profile-page/page-script.ts')
+    .addEntry('page-script', './src/page-script/index.ts')
     .addEntry('flagmod-plus', './src/flagmod-plus/index.ts')
     .addEntry('photo-review', './src/profile-page/photo-review/photo-review.ts')
     .addEntry('options', './src/options/index.ts')

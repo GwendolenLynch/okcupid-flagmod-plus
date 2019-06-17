@@ -1,6 +1,6 @@
-import { IProfile } from '../../interfaces';
+import { IButtonMeta, IProfile } from '../../interfaces';
 import { ButtonEventHandler } from './button-event-handler';
-import { buttonMeta, IButtonMeta } from './button-meta';
+import { buttonMeta } from './button-meta';
 
 export class Buttons {
     public static add(
@@ -27,14 +27,15 @@ export class Buttons {
             button.setAttribute('data-objectId', imageId);
             button.setAttribute('data-ownerId', profile.userid);
             button.setAttribute('data-userId', profile.username);
-            button.setAttribute('data-label', meta.label);
+            button.setAttribute('data-label', String(meta.label));
+            if (meta.report) {
+                button.setAttribute('data-report-profile', JSON.stringify(meta.report));
+            }
 
             button.innerText = meta.text;
 
             const buttonEventHandler = new ButtonEventHandler(button, input, profile, token);
-            button.addEventListener('click', (event: MouseEvent) => {
-                buttonEventHandler.onClick(event);
-            });
+            button.addEventListener('click', (event: MouseEvent) => buttonEventHandler.onClick(event));
         });
 
         return columns;

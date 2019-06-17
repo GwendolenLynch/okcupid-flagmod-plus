@@ -2,13 +2,13 @@ import { browser } from 'webextension-polyfill-ts';
 
 import { messageId } from '../constants';
 import { IProfileOptions } from '../options/schema-interfaces';
+import { Injector } from '../page-script/injector';
+import { MessageHandler } from '../page-script/message-handler';
 import { IPostParamsMessageEvent } from './interfaces';
 import { LastLogin } from './last-login/last-login';
-import { MessageHandler } from './message-handler';
-import { PageScriptInjector } from './page-script-injector';
 import { PhotoReview } from './photo-review/photo-review';
 
-PageScriptInjector.inject();
+Injector.inject(true, true);
 
 window.addEventListener('message', (event: IPostParamsMessageEvent) => {
     const response = MessageHandler.onPostParams(event);

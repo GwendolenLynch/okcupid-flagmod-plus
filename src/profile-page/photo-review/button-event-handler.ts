@@ -1,5 +1,7 @@
-import { hosts } from '../../hosts';
-import { IProfile } from '../../interfaces';
+import { IProfile, IProfileReport } from '../../interfaces';
+import { ImageReport } from '../../report/image-report';
+import { ProfileReport } from '../../report/profile-report';
+import { Report } from '../../report/report';
 
 export class ButtonEventHandler {
     private readonly button: HTMLButtonElement;
@@ -24,43 +26,39 @@ export class ButtonEventHandler {
         }
         this.input.setAttribute('disabled', 'disabled');
 
-        this.report();
-
-    }
-
-    private async report(): Promise<void> {
-        const request = new Request(
-            `${hosts.okCupid.profileApi}/${this.profile.userid}/report`,
-            {
-                body: JSON.stringify({
-                    comment: this.input.value,
-                    id: this.button.getAttribute('data-objectId'),
-                    label: this.button.getAttribute('data-label'),
-                    source: 'photo',
-                    type: 0,
-                    userid: this.button.getAttribute('data-userId'),
-                }),
-                credentials: 'include',
-                headers: new Headers({
-                    'Content-Type': 'application/json; charset=UTF-8',
-                    'authorization': `Bearer ${this.token}`,
-                    'x-okcupid-platform': 'DESKTOP',
-                    'x-requested-with': 'XMLHttpRequest',
-                }),
-                method: 'POST',
-                redirect: 'follow',
-            },
-        );
-
-        fetch(request)
-            .then(async (response: Response) => response.json())
-            .then((json: JSON) => {
+        Report
+            .submit(this.token, this.getImageReport())
+            .then(() => {
                 this.button.classList.remove('is-loading');
                 this.button.innerText = '✔';
+            })
+            .then(() => {
+                if (!this.button.hasAttribute('data-report-profile')) { return; }
+                const options = JSON.parse(String(this.button.getAttribute('data-report-profile')));
+
+                return Report.submit(this.token, this.getProfileReport(options));
             })
             .catch((response) => {
                 this.button.innerText = '💥';
                 console.error('FlagmodPlus Error', response);
             });
+    }
+
+    private getImageReport(): ImageReport {
+        return new ImageReport(
+            Number(this.button.getAttribute('data-label')),
+            this.button.getAttribute('data-userId') as string,
+            this.button.getAttribute('data-objectId') as string,
+            this.input.value,
+        );
+    }
+
+    private getProfileReport(options: IProfileReport): ProfileReport {
+        return new ProfileReport(
+            Number(options.label),
+            this.button.getAttribute('data-userId') as string,
+            this.button.getAttribute('data-userId') as string,
+            '',
+        );
     }
 }

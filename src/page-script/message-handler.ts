@@ -1,5 +1,5 @@
 import { IProfile } from '../interfaces';
-import { IPostParamsMessageEvent } from './interfaces';
+import { IPostParamsMessageEvent } from '../profile-page/interfaces';
 
 export class MessageHandler {
     public static onPostParams(event: IPostParamsMessageEvent): null | { profile: IProfile, token: string } {

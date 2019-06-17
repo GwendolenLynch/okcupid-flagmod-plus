@@ -1,3 +1,5 @@
+import { IProfileReport } from '../interfaces';
+
 export interface IOptions {
     voting: IVotingOptions;
     profile: IProfileOptions;
@@ -20,5 +22,6 @@ export interface IVoteOptions {
     label: string;
     comment: string;
     vote: number;
+    report: IProfileReport | false;
     enable: boolean;
 }

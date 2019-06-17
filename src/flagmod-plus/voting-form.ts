@@ -4,15 +4,19 @@
 import { browser } from 'webextension-polyfill-ts';
 
 import { IProfileOptions, IVoteOptions, IVotingOptions } from '../options/schema-interfaces';
+import { ProfileReport } from '../report/profile-report';
+import { Report } from '../report/report';
 
 export class VotingForm {
     public form: HTMLFormElement;
     private readonly voting: IVotingOptions;
     private readonly profile: IProfileOptions;
+    private readonly token: string;
 
-    public constructor(voting: IVotingOptions, profile: IProfileOptions) {
+    public constructor(voting: IVotingOptions, profile: IProfileOptions, token: string) {
         this.voting = voting;
         this.profile = profile;
+        this.token = token;
         this.form = document.getElementById('flagmodform') as HTMLFormElement;
     }
 
@@ -36,7 +40,7 @@ export class VotingForm {
         });
     }
 
-    public submit(event: MouseEvent): void {
+    public async submit(event: MouseEvent): Promise<void> {
         const target = event.target as HTMLButtonElement;
         if (!target) { throw Error('Event target is empty'); }
         event.preventDefault();
@@ -48,13 +52,20 @@ export class VotingForm {
             const comment = commentInput.value ? ` ${commentInput.value}` : '';
             commentInput.innerText = `${target.getAttribute('data-comment')}${comment}`;
         }
+
+        if (target.hasAttribute('data-report-profile')) {
+            const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
+            const options = JSON.parse(String(target.getAttribute('data-report-profile')));
+            const report = new ProfileReport(options.label, userId.value, userId.value, '');
+            await Report.submit(this.token, report);
+        }
         const voteType = document.getElementById('voteType') as HTMLInputElement;
         voteType.value = vote;
 
         this.form.submit();
     }
 
-    public build(html: string): HTMLElement | null {
+    private build(html: string): HTMLElement | null {
         const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
         const objectId = document.querySelector('input[name="objectid"') as HTMLInputElement;
 
@@ -69,7 +80,7 @@ export class VotingForm {
         return this.form;
     }
 
-    public addButtons(): void {
+    private addButtons(): void {
         const div = this.form.querySelector('#flagmod_plus_quick_vote') as HTMLElement;
 
         this.voting.standard.forEach((button) => {
@@ -77,7 +88,7 @@ export class VotingForm {
         });
     }
 
-    public addButtonsCustom(): void {
+    private addButtonsCustom(): void {
         const div = this.form.querySelector('#flagmod_plus_custom_vote') as HTMLElement;
         let unhidden = false;
 
@@ -103,6 +114,9 @@ export class VotingForm {
         button.setAttribute('data-comment', config.comment || config.abbr);
         button.setAttribute('title', config.comment || config.abbr);
         button.innerText = config.label;
+        if (config.report) {
+            button.setAttribute('data-report-profile', JSON.stringify(config.report));
+        }
 
         div.appendChild(button);
     }

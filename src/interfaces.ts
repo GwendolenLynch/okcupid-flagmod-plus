@@ -101,3 +101,36 @@ export interface IProfilePhotoMeta {
     when_uploaded: number;
     width: number;
 }
+
+export interface IButtonMeta {
+    id: string;
+    text: string;
+    class: string;
+    comment: string;
+    label: number;
+    type: number;
+    report: IProfileReport | false;
+}
+
+/**
+ * POST submissions for flagging profiles
+ */
+export interface IProfileReport {
+    userId: string;
+    type: number;
+    label: number;    // 1: aggressive, 2: sexual, 3: fake, 4: underage, 5: violent, 6: other
+    comment: string;
+    id: string;
+}
+
+/**
+ * POST submissions for flagging photos
+ */
+export interface IImageReport {
+    type: number;
+    source: string;
+    label: number;
+    userId: string;
+    id: string;
+    comment: string;
+}

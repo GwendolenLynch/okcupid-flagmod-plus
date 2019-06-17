@@ -2,6 +2,15 @@ import { browser } from 'webextension-polyfill-ts';
 
 import { schema, schemaVersion } from '../options/schema';
 import { IOptions, IProfileOptions, IVoteOptions } from '../options/schema-interfaces';
+import OnInstalledReason = browser.runtime.OnInstalledReason;
+import { FlagmodPlusInstaller } from './installer';
+
+// tslint:disable:interface-name
+interface OnInstalledDetailsType {
+    reason: OnInstalledReason;
+    temporary: boolean;
+    previousVersionOptional?: string;
+}
 
 interface IOptionsLegacy extends IOptions {
     buttons: {
@@ -9,31 +18,31 @@ interface IOptionsLegacy extends IOptions {
         custom: IVoteOptions[],
     };
 }
+
 interface IVoteOptionsLegacy extends IVoteOptions {
     key: string;
 }
 
 export class FlagmodPlusUpdater {
     public static addListeners(): void {
-        browser.runtime.onInstalled.addListener((details) => FlagmodPlusUpdater.updateSchema);
+        browser.runtime.onInstalled.addListener((details: OnInstalledDetailsType) => {
+            FlagmodPlusUpdater.updateSchema(details);
+        });
     }
 
     /**
      * Update options schema.
      */
-    public static async updateSchema(): Promise<void> {
+    public static async updateSchema(details: OnInstalledDetailsType): Promise<void> {
         const stored = await browser.storage.sync.get(null) as IOptionsLegacy;
-        if (!stored.settings_schema) { return FlagmodPlusUpdater.install(); }
+        if (!stored.settings_schema) { return FlagmodPlusInstaller.run(); }
 
         const currentVersion = Number(stored.settings_schema);
         if (currentVersion >= schemaVersion) { return; }
 
+        if (!currentVersion) { return await browser.storage.sync.set(schema()); }
         if (currentVersion <= 1) { await FlagmodPlusUpdater.updateV1(); }
-        if (currentVersion < 2) { await FlagmodPlusUpdater.updateV2(); }
-    }
-
-    private static async install(): Promise<void> {
-        return await browser.storage.sync.set(schema());
+        if (currentVersion <= 2) { await FlagmodPlusUpdater.updateV2(); }
     }
 
     /**
@@ -55,16 +64,17 @@ export class FlagmodPlusUpdater {
         const pending = schema();
 
         const storedStandard = stored.buttons.standard as IVoteOptionsLegacy[];
-
         if (storedStandard && Array.isArray(storedStandard)) {
             pending.voting.standard.forEach((pendingVote: IVoteOptions, index: number) => {
                 storedStandard.forEach((savedVote: IVoteOptionsLegacy) => {
                     if (
                         (savedVote.key === `comment-${pendingVote.name}`) ||
                         (savedVote.key === 'comment-nv-la' && pendingVote.name === 'nv') ||
-                        (savedVote.key === 'comment-scammer' && pendingVote.name === 'sg')
+                        (savedVote.key === 'comment-scammer' && pendingVote.name === 'fake') ||
+                        (savedVote.key === 'comment-bot' && pendingVote.name === 'fake')
                     ) {
-                        pendingVote.abbr = savedVote.abbr;
+                        pendingVote.abbr = savedVote.abbr || pendingVote.abbr;
+                        pendingVote.comment = savedVote.comment || pendingVote.comment;
                         delete storedStandard[index];
                     }
                 });
@@ -83,6 +93,7 @@ export class FlagmodPlusUpdater {
                         label: savedVote.label,
                         comment: savedVote.comment,
                         vote: savedVote.vote,
+                        report: savedVote.report,
                         enable: savedVote.enable,
                     });
                 }

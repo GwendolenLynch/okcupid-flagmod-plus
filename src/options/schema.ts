@@ -3,7 +3,7 @@ import { IProfileReport } from '../interfaces';
 import { ProfileOptions } from './entities/profile-options-entity';
 import { IOptions, IVoteOptions } from './schema-interfaces';
 
-export const schemaVersion = 2;
+export const schemaVersion = 3;
 export const schema = (): IOptions => ({
         voting: {
             standard: [

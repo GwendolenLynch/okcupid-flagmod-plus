@@ -16,7 +16,7 @@ export class ButtonEventHandler {
         this.token = token;
     }
 
-    public onClick(event: MouseEvent): void {
+    public async onClick(event: MouseEvent): Promise<void> {
         this.button.classList.add('is-loading');
         if (this.button.parentElement) {
             this.button.parentElement.setAttribute('disabled', 'disabled');
@@ -34,7 +34,7 @@ export class ButtonEventHandler {
             })
             .then(() => {
                 if (!this.button.hasAttribute('data-report-profile')) { return; }
-                const options = JSON.parse(String(this.button.getAttribute('data-report-profile')));
+                const options = JSON.parse(String(this.button.getAttribute('data-report-profile'))) as IProfileReport;
 
                 return Report.submit(this.token, this.getProfileReport(options));
             })

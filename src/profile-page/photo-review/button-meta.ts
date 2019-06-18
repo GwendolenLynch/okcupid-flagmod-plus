@@ -6,6 +6,7 @@ import {
     LABEL_IMAGE_NUDITY,
     LABEL_IMAGE_OFFENSIVE,
     LABEL_IMAGE_OTHER,
+    LABEL_PROFILE_FAKE,
     LABEL_PROFILE_SEXUAL,
     TYPE_IMAGE,
     TYPE_PROFILE,
@@ -31,6 +32,18 @@ export const buttonMeta = [
         report: {
             type: TYPE_PROFILE,
             label: LABEL_PROFILE_SEXUAL,
+        } as IProfileReport,
+    },
+    {
+        id: 'fake',
+        text: 'Fake/Scam',
+        class: 'is-warning',
+        comment: '',
+        label: LABEL_IMAGE_NTU,
+        type: TYPE_IMAGE,
+        report: {
+            type: TYPE_PROFILE,
+            label: LABEL_PROFILE_FAKE,
         } as IProfileReport,
     },
     {

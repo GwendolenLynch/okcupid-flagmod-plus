@@ -56,8 +56,8 @@ export class ButtonEventHandler {
     private getProfileReport(options: IProfileReport): ProfileReport {
         return new ProfileReport(
             Number(options.label),
-            this.button.getAttribute('data-userId') as string,
-            this.button.getAttribute('data-userId') as string,
+            this.button.getAttribute('data-ownerid') as string,
+            this.button.getAttribute('data-ownerid') as string,
             '',
         );
     }

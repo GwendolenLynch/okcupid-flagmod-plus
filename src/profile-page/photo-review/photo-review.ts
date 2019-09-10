@@ -17,7 +17,7 @@ export class PhotoReview {
         const viewport = document.createElement('div');
         viewport.setAttribute('class', 'pageable-viewport');
 
-        const pageProfile = document.getElementsByClassName('profile2015-content-main')[0];
+        const pageProfile = document.getElementsByClassName('profile-content-main')[0];
         pageProfile.appendChild(viewport);
 
         const title = document.createElement('div');

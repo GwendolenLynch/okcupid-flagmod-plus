@@ -9,7 +9,7 @@
         "@babel/runtime": "^7.6.0",
         "bulma": "^0.7.5",
         "bulma-dashboard": "^0.1.40",
-        "highlight.js": "^9.15.10",
+        "highlight.js": "^10.4.1",
         "sweetalert2": "^8.17.1",
         "webextension-polyfill": "^0.4.0",
         "webextension-polyfill-ts": "^0.10.0"

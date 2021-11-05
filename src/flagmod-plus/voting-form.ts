@@ -6,6 +6,7 @@ import { browser } from 'webextension-polyfill-ts';
 import { IProfileOptions, IVoteOptions, IVotingOptions } from '../options/schema-interfaces';
 import { ProfileReport } from '../report/profile-report';
 import { Report } from '../report/report';
+import '../../scss/flagmod-plus.scss';
 
 export class VotingForm {
     public form: HTMLFormElement;

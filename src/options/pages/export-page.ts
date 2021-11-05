@@ -1,6 +1,6 @@
 import 'highlight.js/styles/github.css';
 
-import hljs from 'highlight.js/lib/highlight';
+import hljs from 'highlight.js/lib/common';
 import json from 'highlight.js/lib/languages/json';
 import { browser } from 'webextension-polyfill-ts';
 

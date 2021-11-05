@@ -47,7 +47,7 @@ export class LastLogin {
             minute: '2-digit',
             second: '2-digit',
             hour12: false,
-        };
+        } as Intl.DateTimeFormatOptions;
         const date = new Date(profile.lastLogin * 1000)
             .toLocaleDateString(undefined, dateOptions);
 

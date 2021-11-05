@@ -13,22 +13,26 @@ import { VotingCustomFields } from '../fields/voting-custom-fields';
 import { VotingStandardFields } from '../fields/voting-standard-fields';
 
 const question = (title: string, text: string, confirmButtonText: string): SweetAlertOptions => ({
-    type: 'question',
+    icon: 'question',
     title: title,
     text: text,
     showCancelButton: true,
     focusCancel: true,
     confirmButtonText: confirmButtonText,
-    confirmButtonClass: 'button is-success is-large',
-    cancelButtonClass: 'button is-danger is-large',
+    customClass: {
+        confirmButton: 'button is-success is-large',
+        cancelButton: 'button is-danger is-large'
+    },
     buttonsStyling: false,
 });
 
 const jsonError = (error: string): SweetAlertOptions => ({
-    type: 'error',
+    icon: 'error',
     title: 'JSON not valid!',
     text: `The provided data was not valid JSON: ${error}`,
-    confirmButtonClass: 'button is-info is-large',
+    customClass: {
+        confirmButton: 'button is-info is-large',
+    },
     buttonsStyling: false,
 });
 
@@ -102,9 +106,11 @@ export class ButtonEvents {
                 if (!result.value) { return result; }
 
                 return Swal.fire({
-                    type: 'success',
+                    icon: 'success',
                     title: 'Success!',
-                    confirmButtonClass: 'button is-success is-large',
+                    customClass: {
+                        confirmButton: 'button is-success is-large',
+                    },
                     buttonsStyling: false,
                 });
             })

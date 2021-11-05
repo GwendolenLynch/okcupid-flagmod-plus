@@ -1,7 +1,7 @@
 import { IProfile } from '../interfaces';
 
 declare var ACCESS_TOKEN: string;
-declare var profileParams: { profile: IProfile } | undefined;
+let profileParams: { profile: IProfile } | undefined;
 
 const loadEvent = (event: Event) => {
     if (typeof profileParams === 'undefined') { profileParams = undefined; }

@@ -7,7 +7,6 @@ export interface IOptions {
 }
 
 export interface IProfileOptions {
-    last_login: boolean;
     review_panel: boolean;
 }
 

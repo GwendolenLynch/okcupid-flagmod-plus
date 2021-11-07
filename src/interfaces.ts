@@ -7,7 +7,6 @@ export interface IProfile {
     essays: IEssay[];
     firstMessage: null | boolean;
     isLoggedIn: boolean;
-    lastLogin: number;
     likes: {
         mutual_like_vote: number,
         recycled: number,

@@ -102,7 +102,6 @@ export class FlagmodPlusUpdater {
 
         const storedProfile = stored.profile as IProfileOptions;
         if (storedProfile) {
-            if (storedProfile.last_login) { pending.profile.last_login = storedProfile.last_login; }
             if (storedProfile.review_panel) { pending.profile.review_panel = storedProfile.review_panel; }
         }
 

@@ -12,12 +12,10 @@ export class VotingForm {
     public form: HTMLFormElement;
     private readonly voting: IVotingOptions;
     private readonly profile: IProfileOptions;
-    private readonly token: string;
 
-    public constructor(voting: IVotingOptions, profile: IProfileOptions, token: string) {
+    public constructor(voting: IVotingOptions, profile: IProfileOptions) {
         this.voting = voting;
         this.profile = profile;
-        this.token = token;
         this.form = document.getElementById('flagmodform') as HTMLFormElement;
     }
 
@@ -58,7 +56,7 @@ export class VotingForm {
             const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
             const options = JSON.parse(String(target.getAttribute('data-report-profile')));
             const report = new ProfileReport(options.label, userId.value, userId.value, '');
-            await Report.submit(this.token, report);
+            await Report.submit(report);
         }
         const voteType = document.getElementById('voteType') as HTMLInputElement;
         voteType.value = vote;

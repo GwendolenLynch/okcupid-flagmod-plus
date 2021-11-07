@@ -10,7 +10,7 @@ import { ReportComment } from './report-comment';
  * - Button columns
  */
 export class ProfileImages {
-    public static create(profile: IProfile, token: string, viewport: HTMLElement): void {
+    public static create(profile: IProfile, viewport: HTMLElement): void {
         ImageCount.add(profile);
         profile.photos.forEach((imageMeta) => {
             if (imageMeta.info.path) {
@@ -19,8 +19,8 @@ export class ProfileImages {
                 viewport.appendChild(columns);
 
                 ProfileImages.createImage(imageMeta.info, columns);
-                const input = ProfileImages.createCommentInput(imageMeta.info, profile, token, columns);
-                ProfileImages.createButtons(imageMeta.info, profile, token, columns, input);
+                const input = ProfileImages.createCommentInput(imageMeta.info, profile, columns);
+                ProfileImages.createButtons(imageMeta.info, profile, columns, input);
             }
         });
     }
@@ -50,7 +50,6 @@ export class ProfileImages {
     private static createButtons(
         imageMeta: IProfilePhotoMeta,
         profile: IProfile,
-        token: string,
         columns: HTMLElement,
         input: HTMLInputElement,
     ): void {
@@ -59,13 +58,12 @@ export class ProfileImages {
 
         columns.appendChild(column);
 
-        Buttons.add(column, input, imageMeta.picid, profile, token);
+        Buttons.add(column, input, imageMeta.picid, profile);
     }
 
     private static createCommentInput(
         imageMeta: IProfilePhotoMeta,
         profile: IProfile,
-        token: string,
         viewport: HTMLElement,
     ): HTMLInputElement {
         const column = document.createElement('div');
@@ -73,6 +71,6 @@ export class ProfileImages {
 
         viewport.appendChild(column);
 
-        return ReportComment.add(column, imageMeta.picid, profile, token);
+        return ReportComment.add(column, imageMeta.picid, profile);
     }
 }

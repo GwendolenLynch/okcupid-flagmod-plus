@@ -1,7 +1,7 @@
 import { IProfile } from '../../interfaces';
 
 export class ReportComment {
-    public static add(column: HTMLElement, imageId: string, profile: IProfile, token: string): HTMLInputElement {
+    public static add(column: HTMLElement, imageId: string, profile: IProfile): HTMLInputElement {
         const field = document.createElement('div');
         field.setAttribute('class', 'field');
         column.appendChild(field);

@@ -8,5 +8,5 @@ Injector.inject(true, false);
 window.addEventListener('message', (event: IPostParamsMessageEvent) => {
     const response = MessageHandler.onPostParams(event);
     if (response === null) { return; }
-    FlagmodPlus.load(response.profile, response.token);
+    FlagmodPlus.load(response.profile);
 });

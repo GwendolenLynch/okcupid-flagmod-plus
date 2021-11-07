@@ -1,6 +1,5 @@
 import { IProfile } from '../interfaces';
 
-declare var ACCESS_TOKEN: string;
 let profileParams: { profile: IProfile } | undefined;
 
 const loadEvent = (event: Event) => {
@@ -9,7 +8,6 @@ const loadEvent = (event: Event) => {
         action: 'POST_PARAMS',
         payload: {
             profile: profileParams ? profileParams.profile : null,
-            token: ACCESS_TOKEN,
         },
     };
 

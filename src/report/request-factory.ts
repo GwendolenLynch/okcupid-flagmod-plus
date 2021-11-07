@@ -3,7 +3,7 @@ import { hosts } from '../hosts';
 import { IImageReport, IProfileReport } from '../interfaces';
 
 export class RequestFactory {
-    public static create(token: string, report: IProfileReport | IImageReport): Request {
+    public static create(report: IProfileReport | IImageReport): Request {
         return new Request(
             `${hosts.okCupid.profileApi}/${report.userId}/report`,
             {
@@ -11,7 +11,6 @@ export class RequestFactory {
                 credentials: 'include',
                 headers: new Headers({
                     'Content-Type': 'application/json; charset=UTF-8',
-                    'Authorization': `Bearer ${token}`,
                     'X-OkCupid-Platform': 'DESKTOP',
                     'X-Requested-With': 'XMLHttpRequest',
                 }),

@@ -7,13 +7,11 @@ export class ButtonEventHandler {
     private readonly button: HTMLButtonElement;
     private readonly input: HTMLInputElement;
     private readonly profile: { userid: string };
-    private readonly token: string;
 
-    public constructor(button: HTMLButtonElement, input: HTMLInputElement, profile: IProfile, token: string) {
+    public constructor(button: HTMLButtonElement, input: HTMLInputElement, profile: IProfile) {
         this.button = button;
         this.input = input;
         this.profile = profile;
-        this.token = token;
     }
 
     public async onClick(event: MouseEvent): Promise<void> {
@@ -27,7 +25,7 @@ export class ButtonEventHandler {
         this.input.setAttribute('disabled', 'disabled');
 
         Report
-            .submit(this.token, this.getImageReport())
+            .submit(this.getImageReport())
             .then(() => {
                 this.button.classList.remove('is-loading');
                 this.button.innerText = '✔';
@@ -36,7 +34,7 @@ export class ButtonEventHandler {
                 if (!this.button.hasAttribute('data-report-profile')) { return; }
                 const options = JSON.parse(String(this.button.getAttribute('data-report-profile'))) as IProfileReport;
 
-                return Report.submit(this.token, this.getProfileReport(options));
+                return Report.submit(this.getProfileReport(options));
             })
             .catch((response) => {
                 this.button.innerText = '💥';

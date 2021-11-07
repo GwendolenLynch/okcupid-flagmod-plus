@@ -8,7 +8,6 @@ export class Buttons {
         input: HTMLInputElement,
         imageId: string,
         profile: IProfile,
-        token: string,
     ): HTMLElement {
         const columns = document.createElement('div');
         columns.setAttribute('class', 'columns');
@@ -34,7 +33,7 @@ export class Buttons {
 
             button.innerText = meta.text;
 
-            const buttonEventHandler = new ButtonEventHandler(button, input, profile, token);
+            const buttonEventHandler = new ButtonEventHandler(button, input, profile);
             button.addEventListener('click', (event: MouseEvent) => buttonEventHandler.onClick(event));
         });
 

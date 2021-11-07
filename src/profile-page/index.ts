@@ -16,7 +16,7 @@ window.addEventListener('message', (event: IPostParamsMessageEvent) => {
     browser.storage.sync.get('profile')
         .then((config) => config.profile)
         .then((profile: IProfileOptions) => {
-            if (profile.review_panel) { PhotoReview.run(response.profile, response.token); }
+            if (profile.review_panel) { PhotoReview.run(response.profile); }
         });
 
     browser.runtime.sendMessage(messageId, { response: response });

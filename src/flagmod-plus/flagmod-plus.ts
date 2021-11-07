@@ -9,9 +9,9 @@ import { VotingForm } from './voting-form';
 import { VotingImage } from './voting-image';
 
 export class FlagmodPlus {
-    public static async load(profile: IProfile, token: string): Promise<void> {
+    public static async load(profile: IProfile): Promise<void> {
         const config = await FlagmodPlus.config();
-        await new VotingForm(config.voting, config.profile, token).render();
+        await new VotingForm(config.voting, config.profile).render();
 
         VotingImage.setLayout();
         VotingImage.addRISLinks();
@@ -21,7 +21,7 @@ export class FlagmodPlus {
     private static async config(): Promise<IOptions> {
         let config = await browser.storage.sync.get() as IOptions;
         if (typeof config.settings_schema === 'undefined') {
-            FlagmodPlusInstaller.run();
+            await FlagmodPlusInstaller.run();
             config = await browser.storage.sync.get() as IOptions;
         }
 

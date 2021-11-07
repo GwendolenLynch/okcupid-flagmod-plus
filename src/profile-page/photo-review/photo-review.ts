@@ -13,7 +13,7 @@ import { ProfileImages } from './profile-images';
  *     - Button columns
  */
 export class PhotoReview {
-    public static run(profile: IProfile, token: string): void {
+    public static run(profile: IProfile): void {
         const viewport = document.createElement('div');
         viewport.setAttribute('class', 'pageable-viewport');
 
@@ -26,6 +26,6 @@ export class PhotoReview {
 
         viewport.appendChild(title);
 
-        ProfileImages.create(profile, token, viewport);
+        ProfileImages.create(profile, viewport);
     }
 }

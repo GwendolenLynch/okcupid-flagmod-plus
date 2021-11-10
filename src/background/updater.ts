@@ -43,6 +43,7 @@ export class FlagmodPlusUpdater {
         if (!currentVersion) { return await browser.storage.sync.set(schema()); }
         if (currentVersion <= 1) { await FlagmodPlusUpdater.updateV1(); }
         if (currentVersion <= 2) { await FlagmodPlusUpdater.updateV2(); }
+        if (currentVersion <= 3) { await FlagmodPlusUpdater.updateV3(); }
     }
 
     /**
@@ -107,5 +108,27 @@ export class FlagmodPlusUpdater {
 
         await browser.storage.sync.set(pending);
         await browser.storage.sync.remove('buttons');
+    }
+
+    private static async updateV3(): Promise<void> {
+        const stored = await browser.storage.sync.get(null) as IOptionsLegacy;
+
+        const storedStandard = stored.voting.standard as IVoteOptions[];
+        if (storedStandard && Array.isArray(storedStandard)) {
+            storedStandard.forEach((savedVote: IVoteOptions) => {
+                if (savedVote.name === 'unr') {
+                    savedVote.name = 'nf';
+                    savedVote.abbr = 'NF';
+                    savedVote.label = 'No Face';
+                    if (savedVote.comment === 'UNR') {
+                        savedVote.comment = 'NF';
+                    }
+                }
+            });
+
+            stored.voting.standard = storedStandard;
+            stored.settings_schema = 4;
+            await browser.storage.sync.set(stored);
+        }
     }
 }

@@ -3,7 +3,7 @@ import { IProfileReport } from '../interfaces';
 import { ProfileOptions } from './entities/profile-options-entity';
 import { IOptions, IVoteOptions } from './schema-interfaces';
 
-export const schemaVersion = 3;
+export const schemaVersion = 4;
 export const schema = (): IOptions => ({
         voting: {
             standard: [
@@ -44,10 +44,10 @@ export const schema = (): IOptions => ({
                     enable: true,
                 },
                 {
-                    name: 'unr',
-                    abbr: 'UNR',
-                    label: 'User Not Recognisable',
-                    comment: 'UNR',
+                    name: 'nf',
+                    abbr: 'NF',
+                    label: 'No face',
+                    comment: 'NF',
                     vote: 1,
                     report: false,
                     enable: true,

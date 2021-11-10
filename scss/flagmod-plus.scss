@@ -3,6 +3,7 @@ button.flatbutton {
   color: white;
   border: 0;
   padding: 1rem;
+  width: 100% !important;
 }
 
 button.flatbutton.red {
@@ -33,4 +34,8 @@ div.flagmod-plus.ris-bar {
     width: 100px;
     height: 30px;
   }
+}
+
+.lum-lightbox.lum-open {
+  background-color: rgba(157, 186, 242, 0.7);
 }

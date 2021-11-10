@@ -4,6 +4,7 @@ import { IOptions } from '../options/schema-interfaces';
 
 import { FlagmodPlusInstaller } from '../background/installer';
 import { IProfile } from '../interfaces';
+import { Lightbox } from './lightbox';
 import { VotingComments } from './voting-comments';
 import { VotingForm } from './voting-form';
 import { VotingImage } from './voting-image';
@@ -16,6 +17,8 @@ export class FlagmodPlus {
         VotingImage.setLayout();
         VotingImage.addRISLinks();
         VotingComments.move();
+
+        Lightbox.activate()
     }
 
     private static async config(): Promise<IOptions> {

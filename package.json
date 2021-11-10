@@ -10,6 +10,7 @@
         "bulma": "^0.9.3",
         "bulma-dashboard": "^0.3.2",
         "highlight.js": "^11.3.1",
+        "luminous-lightbox": "^2.3.5",
         "sweetalert2": "^11.1.9",
         "webextension-polyfill": "^0.8.0",
         "webextension-polyfill-ts": "^0.26.0"

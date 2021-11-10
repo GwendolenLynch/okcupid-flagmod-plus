@@ -53,7 +53,7 @@ export class VotingForm {
         }
 
         if (target.hasAttribute('data-report-profile')) {
-            const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
+            const userId = document.querySelector('input[name="userid"]') as HTMLInputElement;
             const options = JSON.parse(String(target.getAttribute('data-report-profile')));
             const report = new ProfileReport(options.label, userId.value, userId.value, '');
             await Report.submit(report);
@@ -65,13 +65,13 @@ export class VotingForm {
     }
 
     private build(html: string): HTMLElement | null {
-        const userId = document.querySelector('input[name="userid"') as HTMLInputElement;
-        const objectId = document.querySelector('input[name="objectid"') as HTMLInputElement;
+        const userId = document.querySelector('input[name="userid"]') as HTMLInputElement;
+        const objectId = document.querySelector('input[name="objectid"]') as HTMLInputElement;
 
         this.form.innerHTML = html;
 
-        const formUserId = document.querySelector('input[name="userid"') as HTMLInputElement;
-        const formObjectId = document.querySelector('input[name="objectid"') as HTMLInputElement;
+        const formUserId = document.querySelector('input[name="userid"]') as HTMLInputElement;
+        const formObjectId = document.querySelector('input[name="objectid"]') as HTMLInputElement;
 
         formUserId.value = userId.value;
         formObjectId.value = objectId.value;

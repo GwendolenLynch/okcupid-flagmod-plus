@@ -71,6 +71,11 @@ final class BuildCommand extends Command
                     "label" => "Obscene",
                     "colour" => "red",
                     "vote" => 11,
+                    "report" => [
+                        "label" => 8,
+                        "type" => 0,
+                        "comment" => "HRQ - obscene"
+                    ]
                 ],
                 [
                     "label" => "Deleted",

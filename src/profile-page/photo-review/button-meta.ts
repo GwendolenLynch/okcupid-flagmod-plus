@@ -7,7 +7,7 @@ import {
     LABEL_IMAGE_OFFENSIVE,
     LABEL_IMAGE_OTHER,
     LABEL_PROFILE_FAKE,
-    LABEL_PROFILE_SEXUAL,
+    LABEL_PROFILE_SEXUAL_HARASSMENT,
     TYPE_IMAGE,
     TYPE_PROFILE,
 } from '../../report/types';
@@ -31,7 +31,8 @@ export const buttonMeta = [
         type: TYPE_IMAGE,
         report: {
             type: TYPE_PROFILE,
-            label: LABEL_PROFILE_SEXUAL,
+            label: LABEL_PROFILE_SEXUAL_HARASSMENT,
+            comment: 'HRQ - nudity',
         } as IProfileReport,
     },
     {

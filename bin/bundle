@@ -6,6 +6,11 @@ SRC_FILE="okcupid-flagmod-plus-source.zip"
 PROJECT_DIR="$(pwd)"
 OUT_DIR=$(dirname "${PROJECT_DIR}")
 
+function fail() {
+    echo "An error occurred!"
+    exit 1
+}
+
 if [[ ${VERSION} == "" ]] ; then
     echo "Version string required"
     exit 1
@@ -14,16 +19,16 @@ fi
 yarn install
 yarn build
 
-pushd dist/ 2>&1 > /dev/null
+pushd dist/ > /dev/null 2>&1 || fail
 
 echo "Creating version: ${VERSION}"
 echo "Project directory: ${PROJECT_DIR}"
 echo "Output directory: ${OUT_DIR}"
 
 rm -f "${OUT_DIR}/${ZIP_FILE}"
-zip -9 -r "${OUT_DIR}/${ZIP_FILE}" . --exclude app/*.json
+zip --quiet -9 -r "${OUT_DIR}/${ZIP_FILE}" . --exclude app/*.json
 
-popd 2>&1 > /dev/null
+popd > /dev/null 2>&1 || fail
 
 rm -f "${OUT_DIR}/${SRC_FILE}"
-zip -9 -r "${OUT_DIR}/${SRC_FILE}" package.json src/ scss/ dist/manifest.json dist/html/ dist/images/
+zip --quiet -9 -r "${OUT_DIR}/${SRC_FILE}" package.json src/ scss/ dist/manifest.json dist/html/ dist/images/

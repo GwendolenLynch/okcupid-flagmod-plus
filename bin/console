@@ -1,0 +1,11 @@
+#!/usr/bin/php
+<?php
+
+use OkCupid\FlagmodPlus\Command\BuildCommand;
+use Symfony\Component\Console\Application;
+
+include_once __DIR__ . '/../vendor/autoload.php';
+
+$app = new Application();
+$app->add(new BuildCommand());
+$app->run();

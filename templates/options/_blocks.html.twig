@@ -1,0 +1,174 @@
+{% block main_section %}
+    <div class="dashboard-main is-scrollable">
+        <nav class="navbar is-fixed-top is-white">
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <span class="navbar-item is-italic is-size-3">Options</span>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section">
+            <div id="user-notification" class="notification is-white">
+                <button class="delete is-hidden"></button>
+                <div id="user-notification-body"></div>
+            </div>
+
+            <div class="tile is-parent">
+                <article class="tile is-child">
+                    <form>
+                        {{ block('votes_standard') }}
+                        {{ block('votes_custom') }}
+                        {{ block('profile_page') }}
+                        {{ block('backup') }}
+                        {{ block('action_buttons') }}
+                    </form>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer has-background-white">
+            <p></p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block left_panel %}
+    <div class="dashboard-panel is-medium has-thick-padding has-background-white-bis is-hidden-mobile">
+        <div class="has-text-centered">
+            <figure class="image is-128x128">
+                <img src="../images/icon128.png" alt='Flagmod Plus'>
+                <figcaption class="has-text-info is-italic is-size-4">Flagmod Plus</figcaption>
+                <figcaption class="has-text-info is-italic is-size-6">
+                    <a href="https://github.com/GawainLynch/okcupid-flagmod-plus/releases" target="_blank">v<span id="version"></span></a>
+                </figcaption>
+            </figure>
+        </div>
+        <br>
+        <br>
+        <br>
+        <aside class="menu has-text-white">
+            <p class="menu-label">Voting Buttons</p>
+            <ul class="menu-list">
+                <li id="tab-votes-standard"><a>Standard</a></li>
+                <li id="tab-votes-custom"><a>Custom</a></li>
+            </ul>
+
+            <p class="menu-label">User Profile Pages</p>
+            <ul class="menu-list">
+                <li id="tab-profile"><a>Enhancements</a></li>
+            </ul>
+
+            <p class="menu-label">Backup</p>
+            <ul class="menu-list">
+                <li id="tab-backup-export"><a>Export</a></li>
+                <li id="tab-backup-import"><a>Import</a></li>
+            </ul>
+        </aside>
+    </div>
+{% endblock %}
+
+{% block right_panel %}
+    <div class="dashboard-panel is-small has-background-light is-scrollable">
+    </div>
+{% endblock %}
+
+{% block votes_standard %}
+    <div id="tab-content-votes-standard">
+        <div class="title">Standard Voting Buttons</div>
+        <table class="table table is-fullwidth table is-narrow">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Abbr.</th>
+                <th>Meaning</th>
+                <th>Vote Comment (optional)</th>
+            </tr>
+            </thead>
+            <tbody id="tab-content-votes-standard-body"></tbody>
+        </table>
+        <hr>
+    </div>
+{% endblock %}
+
+{% block votes_custom %}
+    <div id="tab-content-votes-custom" class="is-hidden">
+        <div class="title">Custom Voting Buttons</div>
+        <table class="table table is-fullwidth table is-narrow">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Vote</th>
+                <th>Button Label</th>
+                <th>Vote Comment</th>
+            </tr>
+            </thead>
+            <tbody id="tab-content-votes-custom-body"></tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4"><a id="custom-row-add" class="button is-success">+</a></td>
+            </tr>
+            </tfoot>
+        </table>
+        <hr>
+    </div>
+{% endblock %}
+
+{% block profile_page %}
+    <div id="tab-content-profile" class="is-hidden">
+        <div class="title">User Profile Page Enhancements</div>
+        <table class="table table is-fullwidth table is-narrow">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Setting</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox" id="profile-enable-review"></td>
+                <td>
+                    <label class="checkbox">Enable review panel on user profile pages</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+{% endblock %}
+
+{% block backup %}
+    <div id="tab-content-backup-export" class="is-hidden"></div>
+
+    <div id="tab-content-backup-import" class="is-hidden">
+        <form>
+            <div class="field">
+                <label class="label">Paste in JSON to import</label>
+                <div class="control">
+                    <textarea class="textarea json" id="content-backup-import" rows="40"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block action_buttons %}
+    <div id="action-buttons" class="columns">
+        <div class="column">
+            <div class="field is-grouped">
+                <div class="control">
+                    <button id="submit-save" class="button is-success is-outlined">Save</button>
+                    <button id="submit-import" class="button is-info is-outlined is-hidden">Import</button>
+                </div>
+                <span id="status"></span>
+            </div>
+        </div>
+        <div class="column">
+            <div class="field is-grouped is-pulled-right">
+                <div class="control">
+                    <button id="submit-reset" class="button is-danger is-outlined">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

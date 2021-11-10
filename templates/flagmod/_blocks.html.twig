@@ -1,0 +1,42 @@
+{% block hidden %}
+    <input type="hidden" name="userid">
+    <input type="hidden" name="objectid">
+    <input type="hidden" name="type" value="0">
+    <input type="hidden" id="voteType" name="vote-type" value="0">
+    <input type="hidden" id="secretsubmit" name="submitxx" value="vote">
+{% endblock %}
+
+{% block vote_quick %}
+    <div id="vote_quick">
+        <h3>Quick Votes</h3>
+        <div class="vote_buttons" id="flagmod_plus_quick_vote"></div>
+        <hr>
+    </div>
+{% endblock %}
+
+{% block vote_custom %}
+    <div id="vote_custom" hidden>
+        <h3>Custom Votes</h3>
+        <div class="vote_buttons" id="flagmod_plus_custom_vote"></div>
+        <hr>
+    </div>
+{% endblock %}
+
+{% block vote_normal %}
+    <div id="vote_normal">
+        <h3>Normal Vote</h3>
+        <div class="vote_buttons">
+            {% for button in buttons %}{{ block('vote_button') }}{% endfor %}
+        </div>
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+{% endblock %}
+
+{% block vote_button %}
+    {%- if button.report  -%}
+        <button type="button" class="flatbutton {{ button.colour }}" data-vote="{{ button.vote }}" data-report-profile='{{ button.report|json_encode }}'>{{ button.label }}</button>
+    {%- else -%}
+        <button type="button" class="flatbutton {{ button.colour }}" data-vote="{{ button.vote }}">{{ button.label }}</button>
+    {%- endif -%}
+{% endblock %}

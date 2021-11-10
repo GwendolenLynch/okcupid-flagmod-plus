@@ -1,0 +1,18 @@
+{
+    "name": "okcupid/flagmod-plus",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "ext-tidy": "*",
+        "twig/twig": "^3.3",
+        "symfony/console": "^6.0@beta"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "OkCupid\\FlagmodPlus\\": "dev/"
+        }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}

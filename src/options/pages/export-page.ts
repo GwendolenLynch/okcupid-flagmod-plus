@@ -1,6 +1,6 @@
 import 'highlight.js/styles/github.css';
 
-import hljs from 'highlight.js/lib/common';
+// import hljs from 'highlight.js/lib/common';
 import json from 'highlight.js/lib/languages/json';
 import { browser } from 'webextension-polyfill-ts';
 
@@ -20,7 +20,7 @@ export class ExportPage {
         code.className = 'json';
 
         // tslint:disable:no-unsafe-any
-        hljs.registerLanguage('json', json);
-        hljs.highlightBlock(code);
+        // hljs.registerLanguage('json', json);
+        // hljs.highlightElement(code);
     }
 }

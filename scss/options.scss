@@ -1,2 +1,11 @@
 @import "app";
 @import "~bulma-dashboard/src/bulma-dashboard";
+
+.dashboard-main {
+  flex-grow: 5 !important;
+}
+
+.dashboard-panel {
+  flex-grow: 1 !important;
+  height: unset !important;
+}

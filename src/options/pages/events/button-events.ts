@@ -8,7 +8,7 @@ import { browser } from 'webextension-polyfill-ts';
 import { schema, schemaVersion } from '../../schema';
 import { IOptions } from '../../schema-interfaces';
 
-import { ProfileFields } from '../fields/profile-fields';
+// import { ProfileFields } from '../fields/profile-fields';
 import { VotingCustomFields } from '../fields/voting-custom-fields';
 import { VotingStandardFields } from '../fields/voting-standard-fields';
 
@@ -66,7 +66,7 @@ export class ButtonEvents {
                 standard: VotingStandardFields.read().votes,
                 custom: VotingCustomFields.read().votes,
             },
-            profile: ProfileFields.read(),
+            // profile: ProfileFields.read(),
         };
 
         browser.storage.sync.set(pending)

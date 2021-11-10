@@ -33,16 +33,9 @@
             "matches": [
                 "https://www.okcupid.com/flagmod"
             ]
-        },        {
-            "js": [
-                "app/profile-page.js"
-            ],
-            "matches": [
-                "https://www.okcupid.com/profile/*"
-            ]
         }
     ],
-    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",
+    "content_security_policy": "script-src 'self'; object-src 'self';",
     "web_accessible_resources": [
         "app/page-script.js",
         "app/photo-review.js",

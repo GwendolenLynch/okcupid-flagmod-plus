@@ -1,7 +1,4 @@
-const chalk = require('chalk');
-
 const Encore = require('@symfony/webpack-encore');
-const ChromeExtensionReloader = require('webpack-chrome-extension-reloader');
 
 Encore
     .setOutputPath('dist/app/')
@@ -26,11 +23,6 @@ Encore
     .configureBabel((babelConfig) => {
         babelConfig.plugins.push(['@babel/plugin-transform-runtime', { regenerator: true }]);
     });
-
-// if (!Encore.isProduction()) {
-//     console.log(`${chalk.bgYellow.black('  WARNING  ')} ${chalk.yellow('Adding plugin: ChromeExtensionReloader')}`);
-//     Encore.addPlugin(new ChromeExtensionReloader());
-// }
 
 const config = Encore.getWebpackConfig();
 

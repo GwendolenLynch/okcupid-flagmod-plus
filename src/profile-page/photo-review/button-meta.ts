@@ -32,7 +32,7 @@ export const buttonMeta = [
         report: {
             type: TYPE_PROFILE,
             label: LABEL_PROFILE_SEXUAL_HARASSMENT,
-            comment: 'HRQ - nudity',
+            comment: 'Nudity',
         } as IProfileReport,
     },
     {

@@ -74,7 +74,7 @@ final class BuildCommand extends Command
                     "report" => [
                         "label" => 8,
                         "type" => 0,
-                        "comment" => "HRQ - obscene"
+                        "comment" => "Obscene"
                     ]
                 ],
                 [
